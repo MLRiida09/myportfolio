@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${font.className}  antialiased bg-[#0D0D1F]`}>
+        className={`${font.className}  antialiased bg-black`}>
       <ResponsiveNavbar />
         {children}
       </body>
