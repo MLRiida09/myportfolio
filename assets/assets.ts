@@ -11,7 +11,7 @@ export const Navlinks = [
   { id: 3, url: '#projects', label: 'Projects' },
   { id: 4, url: '#services', label: ' Services' },
   { id: 5, url: '#blog', label: 'Blog ' },
-  { id: 6, url: '#contact', label: 'Contact' },
+  
 ];
 
  //==============NAV-LINKS===========================
@@ -95,7 +95,7 @@ export const heroAssets = {
   },
   buttons: [
     {
-      text: "Download CV",
+      text: "Résumé",
       icon: FiDownload,
       style: "bg-blue-600 hover:bg-blue-700 text-white",
       link: "#cv",
