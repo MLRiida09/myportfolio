@@ -80,12 +80,10 @@ export const buttonTap = {
 //==================================================================
 
 // Hero Section Data
-// assets.js
-
 
 export const heroAssets = {
   userPic: myPic,
-  title: "Mellal Rida",
+  title: "Rida Mellal",
   subtitle: "Full Stack Developer",
   description:
     "I’m a web and app developer from Algeria, passionate about building modern and helpful websites and apps that make everyday life easier.",

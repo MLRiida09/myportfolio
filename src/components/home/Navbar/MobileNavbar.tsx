@@ -17,11 +17,11 @@ function MobileNavbar({closeNav,showNav}:props) {
     <div className="lg:hidden">
       <div
         className={`fixed inset-0 ${navOpen} transform transition-all right-0 duration-500 
-        z-[100002] bg-black opacity-70 w-full h-screen`}
+        z-[100002] bg-gray-700 opacity-95 w-full h-screen`}
       >
         <div
           className={`"text-white ${navOpen} fixed justify-center flex flex-col h-full 
-          transform-all duration-500 delay-300 w-[80%] sm:w-[60%] bg-black 
+          transform-all duration-500 delay-300 w-[80%] sm:w-[60%] bg-gray-700
           space-y-6 z-[100050] right-0`}
         >
           {Navlinks.map((link) => (
