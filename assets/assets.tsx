@@ -1,20 +1,39 @@
+//icons from react :
 import { Variants } from "framer-motion";  
-import myPic from './mypic.jpg';
-
-//icons===========================================
 import { FiDownload, FiMail } from 'react-icons/fi';
+import {FaGraduationCap} from "react-icons/fa";
+//my photo : 
+import myPic from './mypic.jpg';
+//icons:
+//lagus :
+import FaHtml5 from './html5.svg'
+import FaCss3Alt from './css3.svg'
+import FaJs from './javascript.svg'
+import FaPython from './python.svg'
+import FaPhp from './php.svg'
+import SiTypescript from './typescript.svg'
+//farmworks : 
+import FaReact from './react.svg' 
+import SiNextdotjs from './nextjs.svg'
+import SiTailwindcss from './tailwindcss.svg'
+import FaLaravel from './laravel.svg'
+import SiDjango from './django.svg'
+import SiExpress from './express.svg'
+//tools&platforms: 
+import SiGit from './git.svg'
+import SiGithub from './github.svg'
+import FaDocker from './docker.svg'
+import SiFirebase from './firebase.svg'
+import FaLinux from './linux.svg'
+import FaWindows from './windows.svg'
+
+//services icons : 
 import {
-  FaHtml5, FaCss3Alt, FaJs, FaPython, FaPhp,
-  FaReact, FaLaravel, FaDocker, FaWindows, FaLinux,
-  FaGraduationCap
-} from "react-icons/fa";
-import {
-  SiTypescript, SiNextdotjs, SiTailwindcss, SiDjango,
-  SiExpress, SiGit, SiGithub, SiFirebase
-} from "react-icons/si";
-
-
-
+  FaLaptopCode,
+  FaMobileAlt,
+  FaShoppingCart,
+  FaPaintBrush,
+  } from "react-icons/fa";
 
 
 //nav link on Navbar
@@ -22,12 +41,11 @@ export const Navlinks = [
   { id: 1, url: '/', label: 'Home' },
   { id: 2, url: '/About', label: 'About' },
   { id: 3, url: '/projects', label: 'Projects' },
-  { id: 4, url: '/services', label: ' Services' },
+  { id: 4, url: '/Services', label: ' Services' },
   { id: 5, url: '/blog', label: 'Blog ' },
-  
 ];
 
- //==============NAV-LINKS===========================
+//==============NAV-LINKS===========================
 // LOGO when restart
 export const logoContainerVariants: Variants = {
   hidden: { opacity: 0, y: -10 },
@@ -61,7 +79,6 @@ export const linkHover = {
 };
 
 //link click 
-
 export const linkTap = {
   scale: 0.95,
   transition: {
@@ -93,13 +110,12 @@ export const buttonTap = {
 //==================================================================
 
 // Hero Section Data
-
 export const heroAssets = {
   userPic: myPic,
   title: "Rida Mellal",
   subtitle: "Full Stack Developer",
   description:
-  "Welcome to my personal page, where you’ll find my skills, services, portfolio, and a few articles I’ve written.",
+  "Welcome to my personal page, where you'll find my skills, services, portfolio, and a few articles I've written.",
   badge: {
     text: "Available for work",
     locationIcon: "HiOutlineLocationMarker", 
@@ -108,21 +124,19 @@ export const heroAssets = {
     {
       text: "Résumé",
       icon: FiDownload,
-      style: "bg-blue-600 hover:bg-blue-700 text-white",
+      style: "border border-gray-600 hover:border-gray-400 text-white hover:bg-gray-800/20",
       link: "#cv",
     },
     {
       text: "Get In Touch",
       icon: FiMail,
-      style: "border border-gray-600 hover:border-blue-400 text-white",
+      style: "border border-gray-600 hover:border-gray-400 text-white hover:bg-gray-800/20",
       link: "#contact",
     },
   ],
 };
 
 //============================================================================
-
-// بيانات الهيرو (يمكنك تعديلها أو عدم استخدامها هنا)
 
 // 🏅 الشهادات
 export const certificates = [
@@ -133,7 +147,7 @@ export const certificates = [
     icon: FaGraduationCap,
   },
   {
-    title: "Bachelor’s Degree in Automation and Industrial Computing",
+    title: "Bachelor's Degree in Automation and Industrial Computing",
     issuer: "Blida 1 University",
     year: "2026",
     icon: FaGraduationCap,
@@ -143,27 +157,64 @@ export const certificates = [
 // 🧠 المهارات (Skills)
 export const skills = {
   languages: [
-    { icon: FaHtml5, color: "text-orange-500" },
-    { icon: FaCss3Alt, color: "text-blue-500" },
-    { icon: FaJs, color: "text-yellow-400" },
-    { icon: SiTypescript, color: "text-blue-600" },
-    { icon: FaPython, color: "text-green-400" },
-    { icon: FaPhp, color: "text-indigo-500" },
+    { icon: FaHtml5},
+    { icon: FaCss3Alt},
+    { icon: FaJs},
+    { icon: SiTypescript},
+    { icon: FaPython},
+    { icon: FaPhp},
   ],
   frameworks: [
-    { icon: FaReact, color: "text-cyan-400" },
-    { icon: SiNextdotjs, color: "text-gray-200" },
-    { icon: SiTailwindcss, color: "text-teal-400" },
-    { icon: FaLaravel, color: "text-red-500" },
-    { icon: SiDjango, color: "text-green-500" },
-    { icon: SiExpress, color: "text-gray-300" },
+    { icon: FaReact},
+    { icon: SiNextdotjs},
+    { icon: SiTailwindcss},
+    { icon: FaLaravel},
+    { icon: SiDjango},
+    { icon: SiExpress},
   ],
   tools: [
-    { icon: SiGit, color: "text-orange-400" },
-    { icon: SiGithub, color: "text-white" },
-    { icon: FaDocker, color: "text-blue-400" },
-    { icon: SiFirebase, color: "text-yellow-400" },
-    { icon: FaWindows, color: "text-blue-500" },
-    { icon: FaLinux, color: "text-yellow-500" },
+    { icon: SiGit},
+    { icon: SiGithub},
+    { icon: FaDocker},
+    { icon: SiFirebase},
+    { icon: FaWindows},
+    { icon: FaLinux},
   ],
 };
+
+//ServicesData :
+
+export const  services = [
+    {
+      id: 1,
+      title: "Web Development",
+      icon: FaLaptopCode,
+      color: "text-blue-500",
+      description:
+        "Modern, responsive websites built with React, Next.js, and Tailwind CSS. Fast, secure, and SEO-friendly solutions.",
+    },
+    {
+      id: 2,
+      title: "Mobile App Development",
+      icon: FaMobileAlt,
+      color: "text-green-500",
+      description:
+        "Cross-platform mobile apps for Android and iOS using React Native or Flutter. Smooth and user-friendly experiences.",
+    },
+    {
+      id: 3,
+      title: "E-Commerce Stores",
+      icon: FaShoppingCart,
+      color: "text-yellow-500",
+      description:
+        "Full-featured online stores with secure payment systems and inventory management. Scalable and professional dashboards.",
+    },
+    {
+      id: 4,
+      title: "UI/UX Design",
+      icon: FaPaintBrush,
+      color: "text-purple-500",
+      description:
+        "Attractive, intuitive user interfaces. Enhanced user experience tailored to your brand’s identity.",
+    },
+  ];

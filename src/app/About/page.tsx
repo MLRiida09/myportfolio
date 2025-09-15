@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import Image from 'next/image'
 import { FaUser, FaGraduationCap, FaCode } from "react-icons/fa";
 import { heroAssets, certificates, skills } from "../../../assets/assets";
 
@@ -81,7 +82,7 @@ const AboutPage = () => {
               <div className="flex flex-wrap gap-4 justify-center">
                 {skills.languages.map((skill, i) => {
                   const Icon = skill.icon;
-                  return <Icon key={i} className={`text-3xl ${skill.color}`} />;
+                  return <Image key={i} src={Icon} alt="languages icon" className="h-8 w-8"/>;
                 })}
               </div>
             </div>
@@ -94,7 +95,7 @@ const AboutPage = () => {
               <div className="flex flex-wrap gap-4 justify-center">
                 {skills.frameworks.map((skill, i) => {
                   const Icon = skill.icon;
-                  return <Icon key={i} className={`text-3xl ${skill.color}`} />;
+                  return <Image key={i} src={Icon} alt="framework icon" className="h-8 w-8"/>;
                 })}
               </div>
             </div>
@@ -102,10 +103,10 @@ const AboutPage = () => {
             {/* Tools */}
             <div className="flex-1 min-w-[250px] border border-gray-700 rounded-xl bg-gray-800/50 p-4 flex flex-col items-center">
               <h3 className="text-sm text-gray-300 mb-4">Tools & Platforms</h3>
-              <div className="flex flex-wrap gap-4 justify-center">
+              <div className="flex flex-wrap gap-4  justify-center">
                 {skills.tools.map((skill, i) => {
                   const Icon = skill.icon;
-                  return <Icon key={i} className={`text-3xl ${skill.color}`} />;
+                  return <Image key={i} src={Icon} alt="toolsicon" className="h-8 w-8" />;
                 })}
               </div>
             </div>
