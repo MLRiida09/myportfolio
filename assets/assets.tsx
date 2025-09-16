@@ -244,3 +244,5 @@ export const services: Service[] = [
   },
 ];
 
+export type { LucideIcon };
+

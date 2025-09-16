@@ -14,22 +14,16 @@ const ServicesPage: React.FC = () => {
   };
 
   return (
-    <main className="w-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white min-h-screen pt-16 pb-12 px-8">
+    <main className="w-full  text-white min-h-screen pt-16 pb-12 px-8 lg:overflow-hidden overflow-auto">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
-            خدماتي المهنية
+          <h1 className="text-6xl font-bold mb-6 text-white">
+            My professional services
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
-            مجموعة متنوعة من الخدمات الاحترافية التي أقدمها • اضغط على أي بطاقة لمشاهدة التفاصيل
+            four professional services I offer • Click any card for details
           </p>
-          <div className="mt-8 flex items-center justify-center space-x-4">
-            <div className="flex items-center space-x-2 text-gray-400">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-sm">متاح للعمل</span>
-            </div>
-          </div>
         </div>
 
         {/* Services Grid */}
@@ -91,14 +85,6 @@ const ServicesPage: React.FC = () => {
                       <p className="text-gray-300 text-sm leading-relaxed mb-6">
                         {service.description2}
                       </p>
-                      {/* معلومات إضافية */}
-                      <div className="mt-auto">
-                        <div className="text-center mt-4">
-                          <span className="text-xs text-gray-500">
-                            اضغط للعودة ←
-                          </span>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -109,7 +95,7 @@ const ServicesPage: React.FC = () => {
         {/* Footer */}
         <div className="text-center mt-16">
           <p className="text-gray-400 text-sm">
-            مهتم بأحد الخدمات؟ تواصل معي لمناقشة مشروعك
+            Interested in any of my services? Get in touch to discuss your project.
           </p>
         </div>
       </div>

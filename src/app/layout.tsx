@@ -2,15 +2,12 @@ import type { Metadata } from "next";
 import { Inter} from "next/font/google";
 import "./globals.css";
 import ResponsiveNavbar from "@/components/home/Navbar/ResponsiveNavbar";
+import Background from "@/components/home/Backgound/bg";
 
-
-const font=Inter(
-  {
-    weight :['100' ,'200'  ,'300'  ,'400' ,'500' ,'600' ,'700' ,'800' ,'900'],
-    subsets:["latin"],
-
-  }
-)
+const font = Inter({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "My Portfolio | Next.js",
@@ -24,10 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${font.className}  antialiased bg-black`}>
-      <ResponsiveNavbar />
-        {children}
+      <body className={`${font.className} antialiased`}>
+        <Background>
+          <ResponsiveNavbar />
+          {children}
+        </Background>
       </body>
     </html>
   );
