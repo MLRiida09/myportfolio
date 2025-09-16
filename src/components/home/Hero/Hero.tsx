@@ -2,8 +2,8 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { HiOutlineLocationMarker } from "react-icons/hi";
 import { heroAssets } from "../../../../assets/assets";
+
 
 const Hero = () => {
   return (
@@ -32,11 +32,7 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex justify-center lg:justify-start hidden lg:flex"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800/70 rounded-full text-xs sm:text-sm text-gray-300">
-                <HiOutlineLocationMarker className="text-green-400" />
-                {heroAssets.badge.text}
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              </span>
+              
             </motion.div>
 
             {/* titles */}

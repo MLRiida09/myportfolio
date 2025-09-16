@@ -27,13 +27,7 @@ import SiFirebase from './firebase.svg'
 import FaLinux from './linux.svg'
 import FaWindows from './windows.svg'
 
-//services icons : 
-import {
-  FaLaptopCode,
-  FaMobileAlt,
-  FaShoppingCart,
-  FaPaintBrush,
-  } from "react-icons/fa";
+
 
 
 //nav link on Navbar
@@ -184,37 +178,69 @@ export const skills = {
 
 //ServicesData :
 
-export const  services = [
-    {
-      id: 1,
-      title: "Web Development",
-      icon: FaLaptopCode,
-      color: "text-blue-500",
-      description:
-        "Modern, responsive websites built with React, Next.js, and Tailwind CSS. Fast, secure, and SEO-friendly solutions.",
-    },
-    {
-      id: 2,
-      title: "Mobile App Development",
-      icon: FaMobileAlt,
-      color: "text-green-500",
-      description:
-        "Cross-platform mobile apps for Android and iOS using React Native or Flutter. Smooth and user-friendly experiences.",
-    },
-    {
-      id: 3,
-      title: "E-Commerce Stores",
-      icon: FaShoppingCart,
-      color: "text-yellow-500",
-      description:
-        "Full-featured online stores with secure payment systems and inventory management. Scalable and professional dashboards.",
-    },
-    {
-      id: 4,
-      title: "UI/UX Design",
-      icon: FaPaintBrush,
-      color: "text-purple-500",
-      description:
-        "Attractive, intuitive user interfaces. Enhanced user experience tailored to your brand’s identity.",
-    },
-  ];
+import { 
+  Code, Globe, 
+  ShoppingCart, Cloud,
+  LucideIcon } from "lucide-react";
+
+
+export interface Service {
+  id: number;
+  title: string;
+  description: string;
+  description2: string;
+  icon: LucideIcon;
+  color: string;
+  bgGradient: string;
+
+}
+
+export const services: Service[] = [
+ 
+  {
+    id: 1,
+    title: "Website Development",
+    description:
+      "I design websites with a beautiful and unique front-end style, and I can draw inspiration from other designs. I also have solid knowledge of databases and back-end development."
+,
+    description2:
+      "Professional and responsive websites built with modern technologies and best practices.",
+    icon: Code,
+    color: "text-gray-400",
+    bgGradient: "bg-gradient-to-br from-gray-800 to-gray-900",
+  },
+  {
+    id: 2,
+    title: "Web Applications",
+    description:
+      "Custom web applications tailored to your business needs, ensuring performance and scalability.",
+    description2:
+      "Professional and responsive websites built with modern technologies and best practices.",  
+    icon: Globe,
+    color: "text-gray-400",
+    bgGradient: "bg-gradient-to-br from-gray-800 to-gray-900",
+  },
+  {
+    id: 3,
+    title: "E-commerce Platforms",
+    description:
+      "End-to-end e-commerce solutions with secure payment gateways and smooth user experiences.",
+    description2:
+      "Professional and responsive websites built with modern technologies and best practices.",
+    icon: ShoppingCart,
+    color: "text-gray-400",
+    bgGradient: "bg-gradient-to-br from-gray-800 to-gray-900",
+  },
+  {
+    id: 4,
+    title: "Cloud Integration",
+    description:
+      "Seamless cloud integration services to enhance scalability, security, and performance.",
+    description2:
+      "Professional and responsive websites built with modern technologies and best practices.",
+    icon: Cloud,
+    color: "text-gray-400",
+    bgGradient: "bg-gradient-to-br from-gray-800 to-gray-900",
+  },
+];
+
