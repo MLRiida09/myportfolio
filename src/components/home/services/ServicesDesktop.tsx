@@ -14,7 +14,7 @@ const ServicesPage: React.FC = () => {
   };
 
   return (
-    <main className="w-full  text-white min-h-screen pt-16 pb-12 px-8 lg:overflow-hidden overflow-auto">
+    <main className="w-full h-screen  text-white  pt-16 pb-12 px-8 lg:overflow-hidden ">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -27,7 +27,7 @@ const ServicesPage: React.FC = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-4 gap-8">
+        <div className="grid grid-cols-4 gap-8 h-full">
           {services.map((service: Service, index: number) => {
             const Icon: LucideIcon = service.icon;
             const isFlipped: boolean = flippedCards.includes(service.id);

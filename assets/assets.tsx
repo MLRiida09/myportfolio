@@ -1,10 +1,15 @@
 //icons from react :
-import { Variants } from "framer-motion";  
-import { FiDownload, FiMail } from 'react-icons/fi';
-import {FaGraduationCap} from "react-icons/fa";
+import { Variants } from "framer-motion"; 
+import { FiDownload, FiMail } from 'react-icons/fi'; 
+import {FaGraduationCap} from "react-icons/fa"; 
+// Icons for Services Cards : 
+import { 
+  Code, Globe, 
+  ShoppingCart, Cloud,
+  LucideIcon } from "lucide-react";
 //my photo : 
 import myPic from './mypic.jpg';
-//icons:
+//icons About page :
 //lagus :
 import FaHtml5 from './html5.svg'
 import FaCss3Alt from './css3.svg'
@@ -34,13 +39,13 @@ import FaWindows from './windows.svg'
 export const Navlinks = [
   { id: 1, url: '/', label: 'Home' },
   { id: 2, url: '/About', label: 'About' },
-  { id: 3, url: '/projects', label: 'Projects' },
+  { id: 3, url: '/Projects', label: 'Projects' },
   { id: 4, url: '/Services', label: ' Services' },
-  { id: 5, url: '/blog', label: 'Blog ' },
+  { id: 5, url: '/Blog', label: 'Blog ' },
 ];
 
-//==============NAV-LINKS===========================
-// LOGO when restart
+
+// Navbar LOGO when restart
 export const logoContainerVariants: Variants = {
   hidden: { opacity: 0, y: -10 },
   visible: {
@@ -82,7 +87,7 @@ export const linkTap = {
   },
 };
 
-// Click and hover buttons
+// hover buttons
 export const buttonHover = { 
   scale: 1.1,
   transition: {
@@ -91,7 +96,7 @@ export const buttonHover = {
     damping: 10
   }
 };
-
+ //click buttons
 export const buttonTap = { 
   scale: 0.9,
   transition: {
@@ -110,10 +115,7 @@ export const heroAssets = {
   subtitle: "Full Stack Developer",
   description:
   "Welcome to my personal page, where you'll find my skills, services, portfolio, and a few articles I've written.",
-  badge: {
-    text: "Available for work",
-    locationIcon: "HiOutlineLocationMarker", 
-  },
+  
   buttons: [
     {
       text: "Résumé",
@@ -131,8 +133,8 @@ export const heroAssets = {
 };
 
 //============================================================================
-
-// 🏅 الشهادات
+//About DATA : 
+// Certificates Data 
 export const certificates = [
   {
     title: "Full Stack Web Development",
@@ -148,7 +150,7 @@ export const certificates = [
   },
 ];
 
-// 🧠 المهارات (Skills)
+// Skills Data : 
 export const skills = {
   languages: [
     { icon: FaHtml5},
@@ -176,12 +178,9 @@ export const skills = {
   ],
 };
 
-//ServicesData :
+// Services Data :
 
-import { 
-  Code, Globe, 
-  ShoppingCart, Cloud,
-  LucideIcon } from "lucide-react";
+
 
 
 export interface Service {
@@ -245,4 +244,30 @@ export const services: Service[] = [
 ];
 
 export type { LucideIcon };
+
+
+//Project Data : 
+
+export interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  liveUrl: string;
+  sourceUrl: string;
+}
+
+export const projects: Project[] = [
+  {
+    id: 1,
+    title: "Coming soon",
+    description: "I’ve completed the Blogs and Projects sections, but there are still some unfinished projects with a few issues. I’m currently working on fixing them, and once everything is resolved, I’ll publish the articles and projects at the right time.",
+    image: "https://imgs.search.brave.com/bs7ePX0v38cQWYmy04xfXlvDi2SPrAFTNE5yi-QebZE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQz/MzQ1MDQwMS92ZWN0/b3IvdmludGFnZS1j/b21pbmctc29vbi1s/YWJlbC1pbi1ncnVu/Z2Utc3R5bGUuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPXgz/Unk1c25mbVlUX2ZN/YjRkZnFCQTYtaGhr/ZTlNbThwOFBhOWNu/elY5TlU9",
+    liveUrl: "https://github.com/MLRiida09",
+    sourceUrl: "https://github.com/MLRiida09"
+  },
+  
+];
+
+
 
