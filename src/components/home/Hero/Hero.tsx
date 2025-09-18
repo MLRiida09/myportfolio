@@ -1,102 +1,142 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { heroAssets } from "../../../../assets/assets";
-
+import { FaPersonFalling, FaPersonWalkingLuggage } from "react-icons/fa6";
+import { CgDanger } from "react-icons/cg";
+import { LiaTrophySolid } from "react-icons/lia";
 
 const Hero = () => {
+  const maze = [
+    [1,1,1,1,1,1,1,1,1,1,1,1], 
+    [2,0,0,0,1,0,0,0,0,0,3,1],
+    [1,1,1,0,1,0,1,1,1,1,1,1],
+    [1,0,0,0,0,0,0,1,0,0,0,1], 
+    [1,0,1,1,1,1,0,0,0,1,3,1],
+    [1,3,1,0,0,0,0,1,1,1,1,1], 
+    [1,1,1,0,1,1,1,1,0,0,0,1], 
+    [1,0,0,0,0,0,0,0,0,1,0,1],
+    [1,0,1,0,1,1,1,0,1,1,4,0],
+    [1,0,0,0,1,1,1,0,0,1,1,1],
+    [1,1,1,1,1,1,1,1,5,1,1,1],
+  ];
+
+  const obstacles = ["Anxiety", "Overthinking", "Self-Doubt"];
+
+  const renderMazeCell = (cell: number) => {
+    switch (cell) {
+      case 1:
+        return <div className="w-8 h-8 bg-gray-800" />;
+      case 2:
+        return (
+          <div className="w-8 h-8 bg-gray-900 flex items-center justify-center">
+            <FaPersonWalkingLuggage className="text-blue-400 text-lg drop-shadow-[0_0_4px_rgba(96,165,250,0.8)]" />
+          </div>
+        );
+      case 3:
+        return (
+          <div className="w-8 h-8 bg-gray-900 flex items-center justify-center">
+            <CgDanger className="text-red-500 text-lg drop-shadow-[0_0_4px_rgba(239,68,68,0.8)]" />
+          </div>
+        );
+      case 4:
+        return (
+          <div className="w-8 h-8 flex items-center justify-center bg-transparent">
+            <LiaTrophySolid className="text-green-400 text-2xl drop-shadow-[0_0_4px_rgba(34,197,94,0.8)]" />
+          </div>
+        );
+      case 5:
+        return (
+          <div className="w-8 h-8 flex items-center justify-center rounded">
+            <FaPersonFalling className="text-red-500 text-lg" />
+          </div>
+        );
+      default:
+        return <div className="w-8 h-8 bg-gray-900" />;
+    }
+  };
+
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-black pt-[10vh] sm:pt-[12vh] relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center pt-[10vh] sm:pt-[12vh]"
     >
-      {/* Simple elegant background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 via-black to-gray-900/30"></div>
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-600/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 right-1/3 w-80 h-80 bg-gray-600/5 rounded-full blur-3xl"></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-center">
-          {/* texts animation*/}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-6 sm:space-y-8 text-center lg:text-left"
+            transition={{ duration: 0.8 }}
+            className="space-y-6 text-center lg:text-left"
           >
-            {/* badge  */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex justify-center lg:justify-start hidden lg:flex"
-            >
-              
-            </motion.div>
-
-            {/* titles */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-3 sm:mb-4 leading-tight">
-                {heroAssets.title}
-              </h1>
-              <h2 className="text-lg sm:text-2xl lg:text-3xl text-gray-300">
-                {heroAssets.subtitle}
-              </h2>
-            </motion.div>
-            
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-base sm:text-lg text-gray-300 max-w-md sm:max-w-lg mx-auto lg:mx-0 leading-relaxed"
-            >
+            <h1 className="text-4xl lg:text-7xl font-bold text-white">
+              {heroAssets.title}
+            </h1>
+            <h2 className="text-lg lg:text-3xl text-gray-300">
+              {heroAssets.subtitle}
+            </h2>
+            <p className="text-base text-gray-300 max-w-lg mx-auto lg:mx-0">
               {heroAssets.description}
-            </motion.p>
-            
-            {/* Simple regular buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
-            >
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               {heroAssets.buttons.map((btn, index) => {
                 const Icon = btn.icon;
                 return (
                   <a
                     key={index}
                     href={btn.link}
-                    className={`inline-flex items-center gap-3 px-6 sm:px-8 py-3 font-medium rounded-lg transition-colors duration-200 text-sm sm:text-base ${btn.style}`}
+                    className={`inline-flex items-center gap-3 px-6 py-3 rounded-lg transition-colors ${btn.style}`}
                   >
                     <Icon />
                     {btn.text}
                   </a>
                 );
               })}
-            </motion.div>
+            </div>
           </motion.div>
-          
-          {/* My picture with border only */}
+
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="flex justify-center lg:justify-end hidden lg:flex"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-col items-center gap-4"
           >
-            <div className="relative">
-              <div className="w-64 h-80 sm:w-72 sm:h-96 bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border-2 border-gray-500">
-                <Image
-                  src={heroAssets.userPic}
-                  alt="MLRiida-picture"
-                  fill
-                  className="object-cover"
-                />
+            <div className="p-4 rounded-xl bg-gradient-to-br from-gray-950 to-gray-900 border border-gray-700 shadow-2xl">
+              <div
+                className="grid gap-0 text-[0px]"
+                style={{ gridTemplateColumns: `repeat(${maze[0].length}, 1fr)` }}
+              >
+                {maze.map((row, i) =>
+                  row.map((cell, j) => (
+                    <div key={`${i}-${j}`}>{renderMazeCell(cell)}</div>
+                  ))
+                )}
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-gray-800 to-gray-900 border border-gray-600 rounded-lg p-3 w-full shadow-lg">
+              <div className="flex items-center gap-3 text-xs">
+                <div className="flex items-center gap-2 bg-blue-500/10 px-2 py-1 rounded border border-blue-500/20">
+                  <FaPersonWalkingLuggage className="text-blue-400 text-lg" />
+                  <span className="text-blue-400 font-medium">You</span>
+                </div>
+                {obstacles.map((o, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-1 bg-red-500/10 px-2 py-1 rounded border border-red-500/20"
+                  >
+                    <CgDanger className="text-red-500 text-lg" />
+                    <span className="text-red-400 text-[10px]">{o}</span>
+                  </div>
+                ))}
+                <div className="flex items-center gap-1 bg-red-500/10 px-2 py-1 rounded border border-red-500/20">
+                  <FaPersonFalling className="text-red-500 text-lg" />
+                  <span className="text-red-400 text-[10px]">Quit</span>
+                </div>
+                <div className="flex items-center gap-2 bg-green-500/10 px-2 py-1 rounded border border-green-500/20">
+                  <LiaTrophySolid className="text-green-400 text-lg" />
+                  <span className="text-green-400 font-medium">Success</span>
+                </div>
               </div>
             </div>
           </motion.div>

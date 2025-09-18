@@ -23,7 +23,7 @@ const ResponsiveServices = () => {
   }, []);
 
   return (
-    <main className="min-h-screen bg-black text-white p-6">
+    <main className="min-h-screen text-white p-6">
       {isMobile ? (
         <ServicesMobile flippedCards={flippedCards} toggleFlip={toggleFlip} />
       ) : (

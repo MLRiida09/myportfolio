@@ -19,7 +19,7 @@ interface NavProps {
 
 const Nav = ({ openNav }: NavProps) => {
   return (
-    <div className="h-[12vh] z-[10000] fixed w-full bg-black/95 backdrop-blur-md">
+    <div className="h-[12vh] z-[10000] fixed w-full  backdrop-blur-md">
       <div className="flex items-center h-full justify-between w-[90%] mx-auto">
         {/* LOGO */}
         <motion.div

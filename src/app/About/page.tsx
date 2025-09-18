@@ -7,7 +7,7 @@ import { heroAssets, certificates, skills } from "../../../assets/assets";
 
 const AboutPage = () => {
   return (
-    <main className="min-h-screen w-screen bg-black text-white pt-[12vh] px-4 overflow-hidden flex flex-col items-center justify-start">
+    <main className="min-h-screen w-screen  text-white pt-[12vh] px-4 overflow-hidden flex flex-col items-center justify-start">
       <div className="w-full max-w-7xl space-y-6">
         {/* ====== About & Certificates ====== */}
         <div className="flex flex-col lg:flex-row justify-center items-stretch gap-6">

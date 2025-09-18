@@ -3,7 +3,7 @@ import React from "react";
 
 const AboutPage = () => {
   return (
-    <main className="h-screen w-screen bg-black flex flex-col items-center justify-center space-y-6 overflow-hidden">
+    <main className="h-screen w-screen flex flex-col items-center justify-center space-y-6 overflow-hidden">
       {/* الصف العلوي - بطاقتان */}
       <div className="flex space-x-6">
         {/* بطاقة About Me */}
