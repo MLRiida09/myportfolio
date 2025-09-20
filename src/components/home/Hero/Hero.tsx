@@ -2,13 +2,14 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { heroAssets, maze, obstacles, social } from "../../../../assets/assets";
-import { FaPersonFalling, FaPersonWalkingLuggage,  } from "react-icons/fa6";
+import { FaPersonFalling, FaPersonWalkingLuggage } from "react-icons/fa6";
 import { CgDanger } from "react-icons/cg";
 import { LiaTrophySolid } from "react-icons/lia";
 
 const Hero = () => {
   // State to toggle between maze and contact form
   const [showBlankMaze, setShowBlankMaze] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   // Form data state
   const [formData, setFormData] = useState({
@@ -16,8 +17,6 @@ const Hero = () => {
     email: '',
     company: ''
   });
-
-
 
   // Handle input changes for form fields
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,27 +26,56 @@ const Hero = () => {
     });
   };
 
-  // Handle form submission - opens email client with pre-filled content
+  // Handle form submission - sends to Web3Forms and your email
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    // Email subject
-    const subject = encodeURIComponent('Contact Request from Website');
-    
-    // Email body with user data
-    const body = encodeURIComponent(`
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("access_key", "f632d841-d461-4ccc-ba66-390f08ef25fe"); 
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("company", formData.company || "Not specified");
+      formDataToSend.append("subject", "New Contact Form Submission");
+      
+      // إضافة رسالة ثابتة
+      const staticMessage = `
+Hello,
+
+A new message has been received from your website:
+
 Name: ${formData.name}
 Email: ${formData.email}
-${formData.company ? `Company: ${formData.company}` : ''}
+Company: ${formData.company || "Not specified"}
 
-Please contact me.
-    `);
-    
-    // Open email client
-    window.location.href = `mailto:your@email.com?subject=${subject}&body=${body}`;
-    
-    // Reset form after submission
-    setFormData({ name: '', email: '', company: '' });
+This is an automated message from your website's contact form.
+
+`;
+
+      
+      formDataToSend.append("message", staticMessage);
+      
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataToSend
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        alert("تم إرسال رسالتك بنجاح! 🎉");
+        setFormData({ name: "", email: "", company: "" });
+        setShowBlankMaze(false); // إغلاق النموذج بعد الإرسال الناجح
+      } else {
+        throw new Error("فشل في إرسال الرسالة");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("حدث خطأ أثناء إرسال الرسالة. حاول مرة أخرى.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Render maze cells based on cell type
@@ -186,12 +214,12 @@ Please contact me.
                       key={`${i}-${j}`}
                       initial={false}
                       animate={{ 
-                        scale: showBlankMaze ? [1, 0.95, 1] : 1, // Wave effect
+                        scale: showBlankMaze ? [1, 0.95, 1] : 1,
                         backgroundColor: showBlankMaze ? "#374151" : undefined
                       }}
                       transition={{ 
                         duration: 0.4, 
-                        delay: showBlankMaze ? (i + j) * 0.02 : 0, // Staggered animation
+                        delay: showBlankMaze ? (i + j) * 0.02 : 0,
                         ease: "easeInOut"
                       }}
                     >
@@ -200,7 +228,7 @@ Please contact me.
                   ))
                 )}
                 
-                {/* Contact form overlay (appears over maze when showBlankMaze is true) */}
+                {/* Contact form overlay */}
                 {showBlankMaze && (
                   <motion.div 
                     className="absolute inset-0 flex flex-col justify-center items-center gap-2 p-2"
@@ -208,7 +236,7 @@ Please contact me.
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                   >
-                    {/* Form header with close button */}
+                    {/* Form header */}
                     <div className="flex items-center justify-between w-full mb-1">
                       <h3 className="text-sm font-bold text-white">Contact Me</h3>
                     </div>
@@ -223,7 +251,8 @@ Please contact me.
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-2 py-1.5 bg-gray-900/80 backdrop-blur-sm border border-gray-600/50 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors text-xs"
+                        disabled={isSubmitting}
+                        className="w-full px-2 py-1.5 bg-gray-900/80 backdrop-blur-sm border border-gray-600/50 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors text-xs disabled:opacity-50"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.4 }}
@@ -237,20 +266,22 @@ Please contact me.
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-2 py-1.5 bg-gray-900/80 backdrop-blur-sm border border-gray-600/50 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors text-xs"
+                        disabled={isSubmitting}
+                        className="w-full px-2 py-1.5 bg-gray-900/80 backdrop-blur-sm border border-gray-600/50 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors text-xs disabled:opacity-50"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.5 }}
                       />
                       
-                      {/* Company field (optional) */}
+                      {/* Company field */}
                       <motion.input
                         type="text"
                         name="company"
                         placeholder="Company (Optional)"
                         value={formData.company}
                         onChange={handleInputChange}
-                        className="w-full px-2 py-1.5 bg-gray-900/80 backdrop-blur-sm border border-gray-600/50 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors text-xs"
+                        disabled={isSubmitting}
+                        className="w-full px-2 py-1.5 bg-gray-900/80 backdrop-blur-sm border border-gray-600/50 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors text-xs disabled:opacity-50"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.6 }}
@@ -259,14 +290,15 @@ Please contact me.
                       {/* Submit button */}
                       <motion.button
                         type="submit"
-                        className="w-full bg-blue-600/90 backdrop-blur-sm hover:bg-blue-700 text-white font-medium py-1.5 px-3 rounded transition-colors text-xs"
+                        disabled={isSubmitting}
+                        className="w-full bg-blue-600/90 backdrop-blur-sm hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-medium py-1.5 px-3 rounded transition-colors text-xs"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.7 }}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                        whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                        whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                       >
-                        Send
+                        {isSubmitting ? "Sending..." : "Send"}
                       </motion.button>
                     </form>
                   </motion.div>
@@ -279,20 +311,17 @@ Please contact me.
               className="bg-gradient-to-r from-gray-800 to-gray-900 border border-gray-600 rounded-lg p-3 w-full shadow-lg"
               transition={{ duration: 0.5, ease: "easeInOut" }}
             >
-              {/* Show maze legend when not in contact mode */}
               {!showBlankMaze ? (
                 <motion.div 
                   className="flex items-center gap-3 text-xs"
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {/* You (start position) */}
                   <div className="flex items-center gap-2 bg-blue-500/10 px-2 py-1 rounded border border-blue-500/20">
                     <FaPersonWalkingLuggage className="text-blue-400 text-lg" />
                     <span className="text-blue-400 font-medium">You</span>
                   </div>
                   
-                  {/* Obstacles */}
                   {obstacles.map((o, i) => (
                     <div
                       key={i}
@@ -303,32 +332,29 @@ Please contact me.
                     </div>
                   ))}
                   
-                  {/* Quit point */}
                   <div className="flex items-center gap-1 bg-red-500/10 px-2 py-1 rounded border border-red-500/20">
                     <FaPersonFalling className="text-red-500 text-lg" />
                     <span className="text-red-400 text-[10px]">Quit</span>
                   </div>
                   
-                  {/* Success goal */}
                   <div className="flex items-center gap-2 bg-green-500/10 px-2 py-1 rounded border border-green-500/20">
                     <LiaTrophySolid className="text-green-400 text-lg" />
                     <span className="text-green-400 font-medium">Success</span>
                   </div>
                 </motion.div>
               ) : (
-                /* Show social media icons when in contact mode */
                 <motion.div 
                   className="flex items-center justify-center gap-4 text-xs"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  {social.map((social, i) => {
-                    const Icon = social.icon;
+                  {social.map((socialItem, i) => {
+                    const Icon = socialItem.icon;
                     return (
                       <motion.a
                         key={i}
-                        href={social.link}
+                        href={socialItem.link}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-1 bg-blue-500/10 px-2 py-1 rounded border border-blue-500/20"
@@ -336,14 +362,13 @@ Please contact me.
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ 
                           duration: 0.4, 
-                          delay: 0.4 + (i * 0.1), // Staggered appearance
+                          delay: 0.4 + (i * 0.1),
                           ease: "easeOut"
                         }}
-                        
                       >
                         <Icon className="text-slate-200 text-lg drop-shadow-[0_0_4px_rgba(255,255,255,0.2)]" />
                         <span className="text-slate-100 text-[11px] font-medium tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
-                          {social.label}
+                          {socialItem.label}
                         </span>
                       </motion.a>
                     );

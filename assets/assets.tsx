@@ -167,7 +167,6 @@ export const social = [
     { icon: FaTwitter,  label:"Twitter",  link:"https://www.facebook.com/YourProfile" }
   ];
 
-
 //============================================================================
 //About DATA : 
 
