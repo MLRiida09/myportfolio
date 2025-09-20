@@ -81,10 +81,12 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               {heroAssets.buttons.map((btn, index) => {
                 const Icon = btn.icon;
+                const isPdf =btn.link.endsWith(".pdf");
                 return (
                   <a
                     key={index}
                     href={btn.link}
+                    download={isPdf}
                     className={`inline-flex items-center gap-3 px-6 py-3 rounded-lg transition-colors ${btn.style}`}
                   >
                     <Icon />

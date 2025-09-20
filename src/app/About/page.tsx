@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from 'next/image'
 import { FaUser, FaGraduationCap, FaCode } from "react-icons/fa";
-import { heroAssets, certificates, skills } from "../../../assets/assets";
+import { About, heroAssets, certificates, skills } from "../../../assets/assets";
 
 const AboutPage = () => {
   return (
@@ -24,16 +24,10 @@ const AboutPage = () => {
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
               My name{" "}
-              <span className="font-bold">{heroAssets.title}</span>, I live in
-              Algeria and have a strong passion for developing applications and
-              websites, whether as a freelancer or an employee. I have excellent
-              front-end skills, solid back-end and database knowledge using
-              various libraries and languages, and I can work effectively both
-              independently and as part of a team. <br />
-              Feel free to contact me anytime.
+              <span className="font-bold">{heroAssets.title}</span>
+              {About.description}
             </p>
           </motion.div>
-
           {/* Certificates */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}

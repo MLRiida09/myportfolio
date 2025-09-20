@@ -121,19 +121,31 @@ export const heroAssets = {
       text: "Résumé",
       icon: FiDownload,
       style: "border border-gray-600 hover:border-gray-400 text-white hover:bg-gray-800/20",
-      link: "#cv",
+      link: "/cv.pdf",
     },
     {
       text: "Get In Touch",
       icon: FiMail,
       style: "border border-gray-600 hover:border-gray-400 text-white hover:bg-gray-800/20",
-      link: "#contact",
+      link: "/contact",
     },
   ],
 };
 
 //============================================================================
 //About DATA : 
+
+export const About ={
+  description : (
+    <>
+    , I live in Algeria and have a strong passion for <span className="font-bold">developing applications and websites</span>, whether as a freelancer or an employee.
+    I have excellent front-end skills, solid back-end and database knowledge using various libraries and languages, and I can work effectively both independently and as part of a team. <br />
+    I also have two academic degrees,<span className="font-bold">a Bachelor&apos;s and a Master&apos;s</span> . You can view the details of my skills and degrees in my résumé. <br/>
+    Feel free to contact me anytime.
+    </>
+  )
+}
+
 // Certificates Data 
 export const certificates = [
   {
