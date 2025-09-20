@@ -32,6 +32,12 @@ import SiFirebase from './firebase.svg'
 import FaLinux from './linux.svg'
 import FaWindows from './windows.svg'
 
+//Contact me icons :
+import 
+{ FaFacebook, FaLinkedin, FaGithub, 
+  FaEnvelope, FaPhone, FaTwitter } from "react-icons/fa6";
+
+
 
 
 
@@ -131,6 +137,36 @@ export const heroAssets = {
     },
   ],
 };
+
+
+// Maze configuration - 1=wall, 0=path, 2=start, 3=obstacle, 4=goal, 5=quit
+
+export const maze = [
+    [1,1,1,1,1,1,1,1,1,1,1,1], 
+    [2,0,0,0,1,0,0,0,0,0,3,1],
+    [1,1,1,0,1,0,1,1,1,1,1,1],
+    [1,0,0,0,0,0,0,1,0,0,0,1], 
+    [1,0,1,1,1,1,0,0,0,1,3,1],
+    [1,3,1,0,0,0,0,1,1,1,1,1], 
+    [1,1,1,0,1,1,1,1,0,0,0,1], 
+    [1,0,0,0,0,0,0,0,0,1,0,1],
+    [1,0,1,0,1,1,1,0,1,1,4,0],
+    [1,0,0,0,1,1,1,0,0,1,1,1],
+    [1,1,1,1,1,1,1,1,5,1,1,1],
+  ];
+
+export const obstacles = ["Anxiety", "Overthinking", "Self-Doubt"];
+
+
+export const social = [
+    { icon: FaFacebook, label:"Facebook", link: "https://www.facebook.com/YourProfile" },
+    { icon: FaLinkedin, label:"LinkedIn", link:"https://www.facebook.com/YourProfile" },
+    { icon: FaGithub,   label:"GitHub",   link: "https://www.facebook.com/YourProfile" },
+    { icon: FaEnvelope, label:"Email",    link: "https://www.facebook.com/YourProfile" },
+    { icon: FaPhone,    label:"Phone",    link:"https://www.facebook.com/YourProfile" },
+    { icon: FaTwitter,  label:"Twitter",  link:"https://www.facebook.com/YourProfile" }
+  ];
+
 
 //============================================================================
 //About DATA : 
