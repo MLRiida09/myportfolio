@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { heroAssets, maze, obstacles, social } from "../../../../assets/assets";
-import { FaPersonFalling, FaPersonWalkingLuggage, } from "react-icons/fa6";
+import { FaPersonFalling, FaPersonWalkingLuggage } from "react-icons/fa6";
 import { CgDanger } from "react-icons/cg";
 import { LiaTrophySolid } from "react-icons/lia";
 
@@ -10,36 +10,39 @@ const Hero = () => {
   // State to toggle between maze and contact form
   const [showBlankMaze, setShowBlankMaze] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   // Form data state
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: ''
+    name: "",
+    email: "",
+    company: "",
   });
 
   // Handle input changes for form fields
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  // Handle form submission - sends to Web3Forms and your email
+  // Handle form submission - sends data to Web3Forms
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append("access_key", "f632d841-d461-4ccc-ba66-390f08ef25fe"); 
+      formDataToSend.append(
+        "access_key",
+        "f632d841-d461-4ccc-ba66-390f08ef25fe"
+      );
       formDataToSend.append("name", formData.name);
       formDataToSend.append("email", formData.email);
       formDataToSend.append("company", formData.company || "Not specified");
       formDataToSend.append("subject", "New Contact Form Submission");
-      
-      // إضافة رسالة ثابتة
+
+      // Static message content
       const staticMessage = `
 Hello,
 
@@ -50,29 +53,27 @@ Email: ${formData.email}
 Company: ${formData.company || "Not specified"}
 
 This is an automated message from your website's contact form.
-
 `;
 
-      
       formDataToSend.append("message", staticMessage);
-      
+
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formDataToSend
+        body: formDataToSend,
       });
-      
+
       const result = await response.json();
-      
+
       if (result.success) {
-        alert("تم إرسال رسالتك بنجاح! 🎉");
+        alert("Your message has been sent successfully! 🎉");
         setFormData({ name: "", email: "", company: "" });
-        setShowBlankMaze(false); // إغلاق النموذج بعد الإرسال الناجح
+        setShowBlankMaze(false); // Close form after success
       } else {
-        throw new Error("فشل في إرسال الرسالة");
+        throw new Error("Failed to send message");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("حدث خطأ أثناء إرسال الرسالة. حاول مرة أخرى.");
+      alert("An error occurred while sending the message. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -81,14 +82,14 @@ This is an automated message from your website's contact form.
   // Render maze cells based on cell type
   const renderMazeCell = (cell: number) => {
     if (showBlankMaze) {
-      // When showing contact form, all cells become wall color
+      // Show all cells as walls when contact form is open
       return <div className="w-8 h-8 bg-gray-800" />;
     }
 
     switch (cell) {
       case 1: // Wall
         return <div className="w-8 h-8 bg-gray-800" />;
-      case 2: // Start position (You)
+      case 2: // Start position
         return (
           <div className="w-8 h-8 bg-gray-900 flex items-center justify-center">
             <FaPersonWalkingLuggage className="text-blue-400 text-lg drop-shadow-[0_0_4px_rgba(96,165,250,0.8)]" />
@@ -100,7 +101,7 @@ This is an automated message from your website's contact form.
             <CgDanger className="text-red-500 text-lg drop-shadow-[0_0_4px_rgba(239,68,68,0.8)]" />
           </div>
         );
-      case 4: // Goal (Success)
+      case 4: // Goal
         return (
           <div className="w-8 h-8 flex items-center justify-center bg-transparent">
             <LiaTrophySolid className="text-green-400 text-2xl drop-shadow-[0_0_4px_rgba(34,197,94,0.8)]" />
@@ -143,19 +144,21 @@ This is an automated message from your website's contact form.
             <p className="text-base text-gray-300 max-w-lg mx-auto lg:mx-0">
               {heroAssets.description}
             </p>
-            
+
             {/* Action buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               {heroAssets.buttons.map((btn, index) => {
                 const Icon = btn.icon;
                 const isPdf = btn.link.endsWith(".pdf");
-                
+
                 // Check if this is the contact button
-                const isGetInTouch = btn.text.toLowerCase().includes("get in touch") || 
-                                   btn.text.toLowerCase().includes("contact");
-                
-                if (isGetInTouch) {
-                  // Contact button - toggles maze/form view
+                const isContact = btn.text
+                  .toLowerCase()
+                  .includes("get in touch")
+                  || btn.text.toLowerCase().includes("contact");
+
+                if (isContact) {
+                  // Contact button toggles maze/form
                   return (
                     <button
                       key={index}
@@ -167,8 +170,8 @@ This is an automated message from your website's contact form.
                     </button>
                   );
                 }
-                
-                // Regular buttons (download, external links, etc.)
+
+                // Regular buttons (download or external links)
                 return (
                   <a
                     key={index}
@@ -184,21 +187,21 @@ This is an automated message from your website's contact form.
             </div>
           </motion.div>
 
-          {/* Right side - Maze/Contact form */}
+          {/* Right side - Maze or Contact form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col items-center gap-4 hidden md:flex"
           >
-            {/* Maze container with contact form overlay */}
-            <motion.div 
+            {/* Maze container */}
+            <motion.div
               className="p-4 rounded-xl bg-gradient-to-br from-gray-950 to-gray-900 border border-gray-700 shadow-2xl"
-              animate={{ 
+              animate={{
                 scale: 1,
-                boxShadow: showBlankMaze 
-                  ? "0 25px 50px -12px rgba(0, 0, 0, 0.8)" 
-                  : "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+                boxShadow: showBlankMaze
+                  ? "0 25px 50px -12px rgba(0, 0, 0, 0.8)"
+                  : "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
               }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
             >
@@ -207,30 +210,29 @@ This is an automated message from your website's contact form.
                 className="grid gap-0 text-[0px] relative"
                 style={{ gridTemplateColumns: `repeat(${maze[0].length}, 1fr)` }}
               >
-                {/* Render maze cells */}
                 {maze.map((row, i) =>
                   row.map((cell, j) => (
-                    <motion.div 
+                    <motion.div
                       key={`${i}-${j}`}
                       initial={false}
-                      animate={{ 
+                      animate={{
                         scale: showBlankMaze ? [1, 0.95, 1] : 1,
-                        backgroundColor: showBlankMaze ? "#374151" : undefined
+                        backgroundColor: showBlankMaze ? "#374151" : undefined,
                       }}
-                      transition={{ 
-                        duration: 0.4, 
+                      transition={{
+                        duration: 0.4,
                         delay: showBlankMaze ? (i + j) * 0.02 : 0,
-                        ease: "easeInOut"
+                        ease: "easeInOut",
                       }}
                     >
                       {renderMazeCell(cell)}
                     </motion.div>
                   ))
                 )}
-                
+
                 {/* Contact form overlay */}
                 {showBlankMaze && (
-                  <motion.div 
+                  <motion.div
                     className="absolute inset-0 flex flex-col justify-center items-center gap-2 p-2"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -240,7 +242,7 @@ This is an automated message from your website's contact form.
                     <div className="flex items-center justify-between w-full mb-1">
                       <h3 className="text-sm font-bold text-white">Contact Me</h3>
                     </div>
-                    
+
                     {/* Contact form */}
                     <form onSubmit={handleSubmit} className="w-full space-y-2">
                       {/* Name field */}
@@ -257,7 +259,7 @@ This is an automated message from your website's contact form.
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.4 }}
                       />
-                      
+
                       {/* Email field */}
                       <motion.input
                         type="email"
@@ -272,7 +274,7 @@ This is an automated message from your website's contact form.
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.5 }}
                       />
-                      
+
                       {/* Company field */}
                       <motion.input
                         type="text"
@@ -286,7 +288,7 @@ This is an automated message from your website's contact form.
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.6 }}
                       />
-                      
+
                       {/* Submit button */}
                       <motion.button
                         type="submit"
@@ -307,12 +309,12 @@ This is an automated message from your website's contact form.
             </motion.div>
 
             {/* Bottom card - Maze legend or Social icons */}
-            <motion.div 
+            <motion.div
               className="bg-gradient-to-r from-gray-800 to-gray-900 border border-gray-600 rounded-lg p-3 w-full shadow-lg"
               transition={{ duration: 0.5, ease: "easeInOut" }}
             >
               {!showBlankMaze ? (
-                <motion.div 
+                <motion.div
                   className="flex items-center gap-3 text-xs"
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
@@ -321,7 +323,7 @@ This is an automated message from your website's contact form.
                     <FaPersonWalkingLuggage className="text-blue-400 text-lg" />
                     <span className="text-blue-400 font-medium">You</span>
                   </div>
-                  
+
                   {obstacles.map((o, i) => (
                     <div
                       key={i}
@@ -331,19 +333,19 @@ This is an automated message from your website's contact form.
                       <span className="text-red-400 text-[10px]">{o}</span>
                     </div>
                   ))}
-                  
+
                   <div className="flex items-center gap-1 bg-red-500/10 px-2 py-1 rounded border border-red-500/20">
                     <FaPersonFalling className="text-red-500 text-lg" />
                     <span className="text-red-400 text-[10px]">Quit</span>
                   </div>
-                  
+
                   <div className="flex items-center gap-2 bg-green-500/10 px-2 py-1 rounded border border-green-500/20">
                     <LiaTrophySolid className="text-green-400 text-lg" />
                     <span className="text-green-400 font-medium">Success</span>
                   </div>
                 </motion.div>
               ) : (
-                <motion.div 
+                <motion.div
                   className="flex items-center justify-center gap-4 text-xs"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -360,10 +362,10 @@ This is an automated message from your website's contact form.
                         className="flex items-center gap-1 bg-blue-500/10 px-2 py-1 rounded border border-blue-500/20"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ 
-                          duration: 0.4, 
-                          delay: 0.4 + (i * 0.1),
-                          ease: "easeOut"
+                        transition={{
+                          duration: 0.4,
+                          delay: 0.4 + i * 0.1,
+                          ease: "easeOut",
                         }}
                       >
                         <Icon className="text-slate-200 text-lg drop-shadow-[0_0_4px_rgba(255,255,255,0.2)]" />
