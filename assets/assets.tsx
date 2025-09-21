@@ -34,8 +34,7 @@ import FaWindows from './windows.svg'
 
 //Contact me icons :
 import 
-{ FaSquareUpwork, FaLinkedin, FaGithub, 
-  FaTwitter } from "react-icons/fa6";
+{ FaSquareUpwork, FaLinkedin, FaGithub, } from "react-icons/fa6";
 import { FaStackOverflow } from "react-icons/fa";
 import { SiWellfound } from "react-icons/si";
 
