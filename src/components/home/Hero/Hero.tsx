@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { heroAssets, maze, obstacles, social } from "../../../../assets/assets";
-import { FaPersonFalling, FaPersonWalkingLuggage } from "react-icons/fa6";
+import { FaPersonFalling, FaPersonWalkingLuggage, } from "react-icons/fa6";
 import { CgDanger } from "react-icons/cg";
 import { LiaTrophySolid } from "react-icons/lia";
 

@@ -34,9 +34,10 @@ import FaWindows from './windows.svg'
 
 //Contact me icons :
 import 
-{ FaFacebook, FaLinkedin, FaGithub, 
-  FaEnvelope, FaPhone, FaTwitter } from "react-icons/fa6";
-
+{ FaSquareUpwork, FaLinkedin, FaGithub, 
+  FaTwitter } from "react-icons/fa6";
+import { FaStackOverflow } from "react-icons/fa";
+import { SiWellfound } from "react-icons/si";
 
 
 
@@ -159,12 +160,11 @@ export const obstacles = ["Anxiety", "Overthinking", "Self-Doubt"];
 
 
 export const social = [
-    { icon: FaFacebook, label:"Facebook", link: "https://www.facebook.com/YourProfile" },
-    { icon: FaLinkedin, label:"LinkedIn", link:"https://www.facebook.com/YourProfile" },
-    { icon: FaGithub,   label:"GitHub",   link: "https://www.facebook.com/YourProfile" },
-    { icon: FaEnvelope, label:"Email",    link: "https://www.facebook.com/YourProfile" },
-    { icon: FaPhone,    label:"Phone",    link:"https://www.facebook.com/YourProfile" },
-    { icon: FaTwitter,  label:"Twitter",  link:"https://www.facebook.com/YourProfile" }
+    { icon: FaSquareUpwork, label:"Upwork",    link:"https://www.upwork.com/freelancers/~01296c693cf92bee69" },
+    { icon: FaLinkedin, label:"LinkedIn",      link:"https://www.linkedin.com/in/rida-mellal-203989371/" },
+    { icon: FaGithub,   label:"GitHub",            link: "https://github.com/MLRiida09" },
+    { icon: FaStackOverflow,label:"StackOverflow", link: "https://stackoverflow.com/users/31533786/rida-mellal" },
+    { icon: SiWellfound,    label:"wellfound",         link:"https://wellfound.com/u/rida-mellal-2" },
   ];
 
 //============================================================================
@@ -242,53 +242,52 @@ export interface Service {
 }
 
 export const services: Service[] = [
- 
   {
     id: 1,
-    title: "Website Development",
+    title: "Web, Blog & Mobile Apps",
     description:
-      "I design websites with a beautiful and unique front-end style, and I can draw inspiration from other designs. I also have solid knowledge of databases and back-end development."
-,
+      "I develop full-featured websites, blogs, and mobile apps with modern frameworks like React, Next.js, and React Native.",
     description2:
-      "Professional and responsive websites built with modern technologies and best practices.",
+      "Responsive, high-quality solutions with smooth user experience and interactive design.",
     icon: Code,
     color: "text-gray-400",
     bgGradient: "bg-gradient-to-br from-gray-800 to-gray-900",
   },
   {
     id: 2,
-    title: "Web Applications",
+    title: "E-commerce Solutions",
     description:
-      "Custom web applications tailored to your business needs, ensuring performance and scalability.",
+      "Advanced online stores with secure payment gateways, product management, and analytics integration.",
     description2:
-      "Professional and responsive websites built with modern technologies and best practices.",  
-    icon: Globe,
-    color: "text-gray-400",
-    bgGradient: "bg-gradient-to-br from-gray-800 to-gray-900",
-  },
-  {
-    id: 3,
-    title: "E-commerce Platforms",
-    description:
-      "End-to-end e-commerce solutions with secure payment gateways and smooth user experiences.",
-    description2:
-      "Professional and responsive websites built with modern technologies and best practices.",
+      "Custom solutions for small and medium businesses aiming for growth online.",
     icon: ShoppingCart,
     color: "text-gray-400",
     bgGradient: "bg-gradient-to-br from-gray-800 to-gray-900",
   },
   {
-    id: 4,
-    title: "Cloud Integration",
+    id: 3,
+    title: "Web Optimization & Performance",
     description:
-      "Seamless cloud integration services to enhance scalability, security, and performance.",
+      "Enhancing website speed, SEO, accessibility, and responsiveness for better user retention.",
     description2:
-      "Professional and responsive websites built with modern technologies and best practices.",
+      "Optimize front-end and back-end for a seamless experience across all devices.",
+    icon: Globe,
+    color: "text-gray-400",
+    bgGradient: "bg-gradient-to-br from-gray-800 to-gray-900",
+  },
+  {
+    id: 4,
+    title: "API Integration & Automation",
+    description:
+      "Connecting web apps to external APIs, automating workflows, and improving business processes.",
+    description2:
+      "Reliable integrations for payment, messaging, or data services to enhance functionality.",
     icon: Cloud,
     color: "text-gray-400",
     bgGradient: "bg-gradient-to-br from-gray-800 to-gray-900",
   },
 ];
+
 
 export type { LucideIcon };
 
