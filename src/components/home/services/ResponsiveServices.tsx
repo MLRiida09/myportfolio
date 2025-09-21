@@ -25,9 +25,9 @@ const ResponsiveServices = () => {
   return (
     <main className="min-h-screen text-white p-6">
       {isMobile ? (
-        <ServicesMobile flippedCards={flippedCards} toggleFlip={toggleFlip} />
+        <ServicesMobile  />
       ) : (
-        <ServicesDesktop flippedCards={flippedCards} toggleFlip={toggleFlip} />
+        <ServicesDesktop  />
       )}
     </main>
   );
