@@ -38,17 +38,15 @@ import
 import { FaStackOverflow } from "react-icons/fa";
 import { SiWellfound } from "react-icons/si";
 
-
-
-
 //nav link on Navbar
 export const Navlinks = [
   { id: 1, url: '/', label: 'Home' },
   { id: 2, url: '/About', label: 'About' },
-  { id: 3, url: '/Projects', label: 'Projects' },
   { id: 4, url: '/Services', label: ' Services' },
+  { id: 3, url: '/Projects', label: 'Projects' },
   { id: 5, url: '/Blog', label: 'Blog ' },
 ];
+
 
 
 // Navbar LOGO when restart
