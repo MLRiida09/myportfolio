@@ -49,7 +49,7 @@ export default function BlogsPage(): JSX.Element {
   };
 
   return (
-    <main className="min-h-screen px-4 pt-20 pb-16">
+    <main className="min-h-screen px-4 pt-20 pb-16 overflow-y-hidden">
 
       <div className="max-w-7xl mx-auto">
         {/* Hero Header */}
