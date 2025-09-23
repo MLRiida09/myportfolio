@@ -20,7 +20,7 @@ export default function BlogsPage(): JSX.Element {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   
   // استخراج الفئات الفريدة من البيانات
-  const categories: string[] = [, ...new Set(projects.map((blog: Blog) => blog.category || "General"))];
+  const categories: string[] = [ ...new Set(projects.map((blog: Blog) => blog.category || "General"))];
   
   // تصفية المدونات حسب الفئة المختارة
   const filteredBlogs: Blog[] = selectedCategory === "All" 
