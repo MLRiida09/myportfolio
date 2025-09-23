@@ -3,6 +3,7 @@
 import React, { JSX, useState } from "react";
 import { RiAdminFill } from "react-icons/ri";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { projects } from "../../../assets/assets"; // Reuse the same data for blogs
 
 // Type definitions
@@ -17,10 +18,11 @@ interface Blog {
 }
 
 export default function BlogsPage(): JSX.Element {
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   
   // استخراج الفئات الفريدة من البيانات
-  const categories: string[] = [ ...new Set(projects.map((blog: Blog) => blog.category || "General"))];
+  const categories: string[] = ["All", ...new Set(projects.map((blog: Blog) => blog.category || " Owner’s Favorite⭐"))];
   
   // تصفية المدونات حسب الفئة المختارة
   const filteredBlogs: Blog[] = selectedCategory === "All" 
@@ -42,61 +44,77 @@ export default function BlogsPage(): JSX.Element {
     console.log("Navigate to add blog panel");
   };
 
+  const handleReadBlog = (blogId: string | number): void => {
+    router.push(`/Blog/${blogId}`);
+  };
+
   return (
     <main className="min-h-screen px-4 pt-20 pb-16">
 
       <div className="max-w-7xl mx-auto">
         {/* Hero Header */}
         <motion.div 
-          className="text-center mb-16"
+          className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-16"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <motion.h1 
-            className="text-6xl md:text-7xl font-bold  text-white mb-4"
-            initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3, type: "spring", bounce: 0.3 }}
-          >
-            My Blogs
-          </motion.h1>
-          
-          <motion.p
-            className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
+          {/* Left Side - Title and Description */}
+          <div className="flex-1">
+            <motion.h1 
+              className="text-6xl md:text-7xl font-bold text-white mb-4 text-left"
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3, type: "spring", bounce: 0.3 }}
+            >
+              My Blogs
+            </motion.h1>
             
-            Explore a world of tips, tutorials, and insights in web development, design, and technology — featuring {" "}
-            <span className="text-blue-500 animate-pulse">{projects.length} Categories</span> and {" "}
-            <span className="text-green-500 animate-pulse">{projects.length} Total Blogs</span>.
-            
-          </motion.p>
-        </motion.div>
+            <motion.p
+              className="text-xl text-gray-400 max-w-2xl leading-relaxed text-left"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+            I&apos;ve written a {" "}
+            <span className=" font-semibold">{projects.length} total posts</span>{" "}
+            spread across{" "}
+            <span className=" font-semibold">{categories.length - 1} categories</span> <br />
+            plus a personal one where I talk about  random non-tech stuff I like.
+            </motion.p>
+          </div>
 
-        {/* Action Bar */}
-        <motion.div
-          className="flex flex-col sm:flex-row justify-between items-center gap-6 mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          {/* Add Blog Button */}
-          <motion.button
-            onClick={handleAddBlog}
-            className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-slate-600 to-gray-700 
-                       text-white font-bold px-8 py-4 rounded-2xl shadow-lg"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
+          {/* Right Side - Admin Panel Card */}
+          <motion.div
+            className="lg:flex-shrink-0"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <span>Admin Panel</span>
             <motion.div
-            className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-              <RiAdminFill className="text-white w-4 h-4" />
+              onClick={handleAddBlog}
+              className="bg-transparent 
+                         backdrop-blur-xl border border-blue-500/30 rounded-3xl p-6 cursor-pointer group"
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <motion.div
+                  className="w-12 h-12 rounded-2xl bg-transparent 
+                             flex items-center justify-center shadow-lg"
+                  whileHover={{ rotate: 10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <RiAdminFill className="text-white w-6 h-6" />
+                </motion.div>
+                <div>
+                  <h3 className="text-white font-bold text-lg group-hover:text-blue-300 transition-colors">
+                    Admin Panel
+                  </h3>
+                  <p className="text-gray-400 text-sm">Manage your blogs</p>
+                </div>
+              </div>
             </motion.div>
-          </motion.button>
+          </motion.div>
         </motion.div>
         {/* Enhanced Navigation Filter */}
         <motion.div
@@ -163,14 +181,6 @@ export default function BlogsPage(): JSX.Element {
             <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
             <span>Showing {filteredBlogs.length} of {projects.length} blogs</span>
           </div>
-          
-          <motion.div 
-            className="text-sm text-gray-500"
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            {selectedCategory !== "All" && `Filtered by: ${selectedCategory}`}
-          </motion.div>
         </motion.div>
 
         {/* Enhanced Blogs Grid */}
@@ -201,9 +211,10 @@ export default function BlogsPage(): JSX.Element {
                 <motion.img
                   src={blog.image}
                   alt={blog.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover cursor-pointer"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
+                  onClick={() => handleReadBlog(blog.id)}
                 />
                 
                 {/* Category badge */}
@@ -225,10 +236,11 @@ export default function BlogsPage(): JSX.Element {
               <div className="p-8 flex flex-col justify-between h-[20rem]">
                 <div>
                   <motion.h3 
-                    className="text-2xl font-bold text-white mb-4"
+                    className="text-2xl font-bold text-white mb-4 cursor-pointer hover:text-blue-400 transition-colors"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: 0.3 + 0.1 * index }}
+                    onClick={() => handleReadBlog(blog.id)}
                   >
                     {blog.title}
                   </motion.h3>
@@ -249,12 +261,10 @@ export default function BlogsPage(): JSX.Element {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.5 + 0.1 * index }}
                 >
-                  <motion.a
-                    href={blog.liveUrl}
+                  <motion.button
+                    onClick={() => handleReadBlog(blog.id)}
                     className="flex-1 bg-gradient-to-r from-green-400 to-emerald-500 
                                text-white font-semibold px-6 py-3 rounded-2xl text-center shadow-lg"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -270,7 +280,7 @@ export default function BlogsPage(): JSX.Element {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </motion.svg>
                     </span>
-                  </motion.a>
+                  </motion.button>
 
                   <motion.a
                     href={blog.sourceUrl}
@@ -299,21 +309,6 @@ export default function BlogsPage(): JSX.Element {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
           >
-            <motion.div 
-              className="relative inline-block mb-8"
-              animate={{ 
-                rotate: [0, 5, -5, 0],
-                scale: [1, 1.1, 1]
-              }}
-              transition={{ 
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              <div className="text-8xl opacity-50">📝</div>
-            </motion.div>
-            
             <motion.h3 
               className="text-3xl font-bold text-white mb-4"
               initial={{ opacity: 0, y: 20 }}
@@ -324,22 +319,13 @@ export default function BlogsPage(): JSX.Element {
             </motion.h3>
             
             <motion.p 
-              className="text-gray-400 text-lg max-w-md mx-auto mb-8"
+              className="text-gray-300 text-lg max-w-md mx-auto mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              No blogs match the selected category. Try exploring other categories or create your first blog!
+              No blogs match the selected category.
             </motion.p>
-
-            <motion.button
-              onClick={handleAddBlog}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-8 py-4 rounded-2xl shadow-lg"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Create Your First Blog
-            </motion.button>
           </motion.div>
         )}
       </div>
