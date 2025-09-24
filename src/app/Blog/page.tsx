@@ -36,7 +36,7 @@ export default function BlogsPage(): JSX.Element {
   };
 
   const handleReadblog = (blogId: string | number): void => {
-    router.push(`/blog/${blogId}`);
+    router.push(`/Blog/${blogId}`);
   };
 
   return (
