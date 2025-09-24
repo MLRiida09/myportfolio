@@ -301,14 +301,19 @@ export interface Project {
   image: string;
   liveUrl: string;
   sourceUrl: string;
+  
 }
 
+const comingSoon =
+  "https://imgs.search.brave.com/bs7ePX0v38cQWYmy04xfXlvDi2SPrAFTNE5yi-QebZE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQz/MzQ1MDQwMS92ZWN0/b3IvdmludGFnZS1j/b21pbmctc29vbi1s/YWJlbC1pbi1ncnVu/Z2Utc3R5bGUuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPXgz/Unk1c25mbVlUX2ZN/YjRkZnFCQTYtaGhr/ZTlNbThwOFBhOWNu/elY5TlU9";
+
 export const projects: Project[] = [
+  
   {
     id: 1,
     title: "Coming soon",
     description: "I’ve completed the Blogs and Projects sections, but there are still some unfinished projects with a few issues. I’m currently working on fixing them, and once everything is resolved, I’ll publish the articles and projects at the right time.",
-    image: "https://imgs.search.brave.com/bs7ePX0v38cQWYmy04xfXlvDi2SPrAFTNE5yi-QebZE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQz/MzQ1MDQwMS92ZWN0/b3IvdmludGFnZS1j/b21pbmctc29vbi1s/YWJlbC1pbi1ncnVu/Z2Utc3R5bGUuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPXgz/Unk1c25mbVlUX2ZN/YjRkZnFCQTYtaGhr/ZTlNbThwOFBhOWNu/elY5TlU9",
+    image: comingSoon,
     liveUrl: "https://github.com/MLRiida09",
     sourceUrl: "https://github.com/MLRiida09"
   },
@@ -316,6 +321,180 @@ export const projects: Project[] = [
 ];
 
 // Blogs Data : 
+
+export interface Blog {
+  [x: string]: string | undefined;
+  id : string ;
+  title : string ;
+  description : string ; 
+  content : string ;
+  image : string ; 
+  category: string;
+}
+
+export const blogs: Blog[] = [
+  {
+  id:"blog",
+  title:"A detailed step by step guide to manage your lifestyle",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Lifestyle",
+  content: `
+      <h2>Introduction</h2>
+      <p>Managing your lifestyle effectively is crucial for maintaining a balanced and fulfilling life. In today's fast-paced world, it's easy to get caught up in the chaos and lose sight of what truly matters.</p>
+      
+      <h3>Step 1: Set Clear Goals</h3>
+      <p>The first step in managing your lifestyle is to set clear, achievable goals. These should be specific, measurable, and aligned with your values and priorities.</p>
+      
+      <h3>Step 2: Create a Routine</h3>
+      <p>Establishing a daily routine helps create structure and ensures that you're making time for the things that matter most to you.</p>
+      
+      <h3>Step 3: Practice Self-Care</h3>
+      <p>Self-care isn't selfish – it's essential. Make sure to prioritize your physical and mental health through regular exercise, adequate sleep, and stress management techniques.</p>
+      
+      <h3>Conclusion</h3>
+      <p>Remember, lifestyle management is an ongoing process. Be patient with yourself and make adjustments as needed. The key is consistency and finding what works best for you.</p>
+    `
+},
+{
+  id:"blog2",
+  title:"How to create an effective startup roadmap or ideas",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Startup",
+  content: `
+      <h2>Introduction</h2>
+      <p>Managing your lifestyle effectively is crucial for maintaining a balanced and fulfilling life. In today's fast-paced world, it's easy to get caught up in the chaos and lose sight of what truly matters.</p>
+      
+      <h3>Step 1: Set Clear Goals</h3>
+      <p>The first step in managing your lifestyle is to set clear, achievable goals. These should be specific, measurable, and aligned with your values and priorities.</p>
+      
+      <h3>Step 2: Create a Routine</h3>
+      <p>Establishing a daily routine helps create structure and ensures that you're making time for the things that matter most to you.</p>
+      
+      <h3>Step 3: Practice Self-Care</h3>
+      <p>Self-care isn't selfish – it's essential. Make sure to prioritize your physical and mental health through regular exercise, adequate sleep, and stress management techniques.</p>
+      
+      <h3>Conclusion</h3>
+      <p>Remember, lifestyle management is an ongoing process. Be patient with yourself and make adjustments as needed. The key is consistency and finding what works best for you.</p>
+    `
+},
+{
+  id:"blog3",
+  title:"Learning new technology to boost your career in software",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Technology",
+  content :""
+},
+{
+  id:"blog4",
+  title:"Tips for getting the most out of apps and software",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Technology",
+  content :""
+},
+{
+  id:"blog5",
+  title:"Enhancing your skills and capturing memorable moments",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Lifestyle",
+  content :""
+},
+{
+  id:"blog6",
+  title:"Maximizing returns by minimizing resources in your startup",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Startup",
+  content :""
+},
+{
+  id:"blog7",
+  title:"Technology for Career advancement in development",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Technology",
+  content :""
+},
+{
+  id:"blog8",
+  title:"A comprehensive roadmap for effective lifestyle management",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Lifestyle",
+  content :""
+},
+{
+  id:"blog9",
+  title:"Achieving maximum returns with minimal resources",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Startup",
+  content :""
+},
+{
+  id:"blog10",
+  title:"Beyond the Ordinary: Crafting Your Exceptional Lifestyle",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Lifestyle",
+  content :""
+},
+{
+  id:"blog11",
+  title:"Unveiling the Secrets of Successful Startups in Technolgy",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Startup",
+  content :""
+},
+{
+  id:"blog12",
+  title:"How to design an online Learning Platform today",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Technology",
+  content :""
+},
+{
+  id:"blog13",
+  title:"Tomorrow's Algorithms: Shaping the Landscape of Future AI",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Startup",
+  content :""
+},
+{
+  id:"blog14",
+  title:"Balance & Bliss: Navigating Life's Journey with Style",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Lifestyle",
+  content :""
+},
+{
+  id:"blog15",
+  title:"Exploring the Evolution of social networking in the Future",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Technology",
+  content :""
+},
+{
+  id:"blog16",
+  title:"Shaping the Future of statup ecosystem in the world",
+  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
+  image:comingSoon,
+  category:"Startup",
+  content :""
+}
+] ;
+
+
+
 
 
 

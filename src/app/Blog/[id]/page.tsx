@@ -3,19 +3,9 @@
 import React, { JSX, useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { projects } from "../../../../assets/assets"; // تعديل المسار حسب الحاجة
+import { blogs, Blog } from "../../../../assets/assets"; 
 
-// Type definitions
-interface Blog {
-  id: string | number;
-  title: string;
-  description: string;
-  image: string;
-  liveUrl: string;
-  sourceUrl: string;
-  category?: string;
-  content?: string;
-}
+
 
 export default function BlogDetailPage(): JSX.Element {
   const params = useParams();
@@ -25,7 +15,7 @@ export default function BlogDetailPage(): JSX.Element {
 
   useEffect(() => {
     const blogId = params.id;
-    const foundBlog = projects.find((b: Blog) => b.id.toString() === blogId);
+    const foundBlog = blogs.find((b: Blog) => b.id.toString() === blogId);
     
     if (foundBlog) {
       setBlog(foundBlog);

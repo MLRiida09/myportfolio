@@ -4,30 +4,21 @@ import React, { JSX, useState } from "react";
 import { RiAdminFill } from "react-icons/ri";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { projects } from "../../../assets/assets"; // Reuse the same data for blogs
+import {blogs ,Blog} from "../../../assets/assets"; 
 
-// Type definitions
-interface Blog {
-  id: string | number;
-  title: string;
-  description: string;
-  image: string;
-  liveUrl: string;
-  sourceUrl: string;
-  category?: string;
-}
 
 export default function BlogsPage(): JSX.Element {
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   
   // استخراج الفئات الفريدة من البيانات
-  const categories: string[] = ["All", ...new Set(projects.map((blog: Blog) => blog.category || " Owner’s Favorite⭐"))];
+  const categories: string[] = ["All", ...new Set(blogs.map((b: Blog) => b.category || "Genral⭐"))];
   
   // تصفية المدونات حسب الفئة المختارة
-  const filteredBlogs: Blog[] = selectedCategory === "All" 
-    ? projects 
-    : projects.filter((blog: Blog) => (blog.category || "General") === selectedCategory);
+  const filteredblogs: Blog[] = 
+    selectedCategory === "All" 
+    ? blogs 
+    : blogs.filter((blog: Blog) => (blog.category || "Genral⭐") === selectedCategory);
 
   const handleCategoryChange = (category: string): void => {
     setSelectedCategory(category);
@@ -35,17 +26,17 @@ export default function BlogsPage(): JSX.Element {
 
   const getCategoryCount = (category: string): number => {
     return category === "All" 
-      ? projects.length 
-      : projects.filter((blog: Blog) => (blog.category || "General") === category).length;
+      ? blogs.length 
+      : blogs.filter((blog: Blog) => (blog.category || "Genral⭐") === category).length;
   };
 
-  const handleAddBlog = (): void => {
+  const handleAddblog = (): void => {
     // سيتم ربطه لاحقاً بـ admin panel
     console.log("Navigate to add blog panel");
   };
 
-  const handleReadBlog = (blogId: string | number): void => {
-    router.push(`/Blog/${blogId}`);
+  const handleReadblog = (blogId: string | number): void => {
+    router.push(`/blog/${blogId}`);
   };
 
   return (
@@ -67,7 +58,7 @@ export default function BlogsPage(): JSX.Element {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3, type: "spring", bounce: 0.3 }}
             >
-              My Blogs
+              My blogs
             </motion.h1>
             
             <motion.p
@@ -77,7 +68,7 @@ export default function BlogsPage(): JSX.Element {
               transition={{ duration: 0.6, delay: 0.5 }}
             >
             I&apos;ve written a {" "}
-            <span className=" font-semibold">{projects.length} total posts</span>{" "}
+            <span className=" font-semibold">{blogs.length} total posts</span>{" "}
             spread across{" "}
             <span className=" font-semibold">{categories.length - 1} categories</span> <br />
             plus a personal one where I talk about  random non-tech stuff I like.
@@ -92,7 +83,7 @@ export default function BlogsPage(): JSX.Element {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <motion.div
-              onClick={handleAddBlog}
+              onClick={handleAddblog}
               className="bg-transparent 
                          backdrop-blur-xl border border-blue-500/30 rounded-3xl p-6 cursor-pointer group"
               whileTap={{ scale: 0.98 }}
@@ -179,18 +170,18 @@ export default function BlogsPage(): JSX.Element {
         >
           <div className="text-gray-400 flex items-center gap-2">
             <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-            <span>Showing {filteredBlogs.length} of {projects.length} blogs</span>
+            <span>Showing {filteredblogs.length} of {blogs.length} blogs</span>
           </div>
         </motion.div>
 
-        {/* Enhanced Blogs Grid */}
+        {/* Enhanced blogs Grid */}
         <motion.div 
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.9 }}
         >
-          {filteredBlogs.map((blog: Blog, index: number) => (
+          {filteredblogs.map((blog: Blog, index: number) => (
             <motion.article
               key={blog.id}
               className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/50 
@@ -206,7 +197,7 @@ export default function BlogsPage(): JSX.Element {
               layout
             >
 
-              {/* Blog image */}
+              {/* blog image */}
               <div className="relative overflow-hidden h-48">
                 <motion.img
                   src={blog.image}
@@ -214,7 +205,7 @@ export default function BlogsPage(): JSX.Element {
                   className="w-full h-full object-cover cursor-pointer"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
-                  onClick={() => handleReadBlog(blog.id)}
+                  onClick={() => handleReadblog(blog.id)}
                 />
                 
                 {/* Category badge */}
@@ -224,29 +215,29 @@ export default function BlogsPage(): JSX.Element {
                   animate={{ opacity: 1, scale: 1, rotate: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 * index, type: "spring" }}
                 >
-                  <span className="bg-blue-400
-                                   text-white px-4 py-2 rounded-2xl text-sm font-medium
+                  <span className="bg-green-400
+                                   text-white  px-4 py-2 rounded-2xl text-sm font-medium
                                    backdrop-blur-sm shadow-lg border border-white/20">
                     {blog.category || "General"}
                   </span>
                 </motion.div>
               </div>
 
-              {/* Blog content */}
+              {/* blog content */}
               <div className="p-8 flex flex-col justify-between h-[20rem]">
                 <div>
                   <motion.h3 
-                    className="text-2xl font-bold text-white mb-4 cursor-pointer hover:text-blue-400 transition-colors"
+                    className="text-2xl font-bold text-white mb-4 cursor-pointer"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: 0.3 + 0.1 * index }}
-                    onClick={() => handleReadBlog(blog.id)}
+                    onClick={() => handleReadblog(blog.id)}
                   >
                     {blog.title}
                   </motion.h3>
 
                   <motion.p 
-                    className="text-gray-400 mb-6 line-clamp-3 leading-relaxed"
+                    className="text-gray-200 mb-6 line-clamp-3 leading-relaxed"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: 0.4 + 0.1 * index }}
@@ -262,14 +253,14 @@ export default function BlogsPage(): JSX.Element {
                   transition={{ duration: 0.4, delay: 0.5 + 0.1 * index }}
                 >
                   <motion.button
-                    onClick={() => handleReadBlog(blog.id)}
+                    onClick={() => handleReadblog(blog.id)}
                     className="flex-1 bg-gradient-to-r from-green-400 to-emerald-500 
                                text-white font-semibold px-6 py-3 rounded-2xl text-center shadow-lg"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <span className="flex items-center justify-center gap-2">
-                      Read Blog
+                      Read blog
                       <motion.svg 
                         className="w-4 h-4" 
                         fill="none" 
@@ -282,19 +273,17 @@ export default function BlogsPage(): JSX.Element {
                     </span>
                   </motion.button>
 
-                  <motion.a
-                    href={blog.sourceUrl}
+                  <motion.button
+                    onClick={() => handleReadblog(blog.id)}
                     className="bg-gray-700/50 text-gray-300 px-6 py-3 rounded-2xl
                                backdrop-blur-sm border border-gray-600/50 flex items-center justify-center"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
-                  </motion.a>
+                  </motion.button>
                 </motion.div>
               </div>
             </motion.article>
@@ -302,7 +291,7 @@ export default function BlogsPage(): JSX.Element {
         </motion.div>
 
         {/* Enhanced Empty state */}
-        {filteredBlogs.length === 0 && (
+        {filteredblogs.length === 0 && (
           <motion.div 
             className="text-center py-20"
             initial={{ opacity: 0, scale: 0.8 }}
