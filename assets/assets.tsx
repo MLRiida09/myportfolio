@@ -316,7 +316,7 @@ export const projects: Project[] = [
     id: 1,
     title: "landing page portfolio ",
     description:"A portfolio landing page designed using Next.js, Tailwind CSS, and JavaScript, featuring 5 well-structured and neatly styled sections. The project is 90% complete and currently in its final stages.",
-    image: "/images/landingpage.png",
+    image: "/images/landingpage.PNG",
     liveUrl: "https://landing-page-nine-alpha-42.vercel.app/",
     sourceUrl: "https://github.com/MLRiida09/landing-page-portfolio",
     category:"Next.js"

@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image'
 import React, { JSX, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
@@ -138,13 +139,16 @@ export default function ProjectsPage(): JSX.Element {
             >
               {/* Project Image */}
               <div className="relative overflow-hidden h-48">
-                <motion.img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover cursor-pointer"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                />
+                <div className="relative w-full h-full">
+              <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover cursor-pointer transition-transform duration-600 hover:scale-110"
+               priority={index < 3} // تحميل الصور الأولى بأولوية
+              />
+              </div>
                 <motion.div
                   className="absolute top-4 right-4"
                   initial={{ opacity: 0, scale: 0, rotate: -10 }}
