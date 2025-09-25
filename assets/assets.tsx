@@ -335,31 +335,6 @@ export interface Blog {
 }
 
 export const blogs: Blog[] = [
-  {
-  id:"blog",
-  title:"A detailed step by step guide to manage your lifestyle",
-  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
-  image:comingSoon,
-  category:"Lifestyle",
-  content:"",
-},
-{
-  id:"blog2",
-  title:"How to create an effective startup roadmap or ideas",
-  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
-  image:comingSoon,
-  category:"Startup",
-  content:"",
-},
-{
-  id:"blog3",
-  title:"Learning new technology to boost your career in software",
-  description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
-  image:comingSoon,
-  category:"Technology",
-  content :""
-},
-
 ] ;
 
 
