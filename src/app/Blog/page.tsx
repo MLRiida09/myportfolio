@@ -58,7 +58,7 @@ export default function BlogsPage(): JSX.Element {
                 bounce: 0.3,
               }}
             >
-              My blogs
+              Code tips
             </motion.h1>
 
             <motion.p
@@ -73,8 +73,7 @@ export default function BlogsPage(): JSX.Element {
               <span className="font-semibold">
                 {categories.length} categories</span>{" "}
               <br />
-              plus a personal one where I talk about random non-tech stuff I
-              like.
+              and a posts  where I share my interests in Industrial Automation and Computing through PLC coding and code examples.
             </motion.p>
           </div>
         </motion.div>
