@@ -62,7 +62,7 @@ export default function BlogsPage(): JSX.Element {
             </motion.h1>
 
             <motion.p
-              className="text-xl text-gray-400 max-w-2xl leading-relaxed text-left"
+              className="text-xl text-gray-400 max-w-4xl leading-relaxed text-left "
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
@@ -71,7 +71,7 @@ export default function BlogsPage(): JSX.Element {
               <span className="font-semibold">{blogs.length} total posts</span>{" "}
               spread across{" "}
               <span className="font-semibold">
-                {categories.length} categories</span>{" "}
+                {categories.length-1} categories</span>{" "}
               <br />
               and a posts  where I share my interests in Industrial Automation and Computing through PLC coding and code examples.
             </motion.p>

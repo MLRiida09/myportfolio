@@ -9,6 +9,7 @@ import {
   LucideIcon } from "lucide-react";
 //my photo : 
 import myPic from './mypic.jpg';
+
 //icons About page :
 //lagus :
 import FaHtml5 from './html5.svg'
@@ -298,7 +299,7 @@ export interface Project {
   id: number;
   title: string;
   description: string;
-  image: string;
+  image: string ;
   liveUrl: string;
   sourceUrl: string;
   category?: string;
@@ -308,9 +309,19 @@ export interface Project {
 const comingSoon =
   "https://imgs.search.brave.com/bs7ePX0v38cQWYmy04xfXlvDi2SPrAFTNE5yi-QebZE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQz/MzQ1MDQwMS92ZWN0/b3IvdmludGFnZS1j/b21pbmctc29vbi1s/YWJlbC1pbi1ncnVu/Z2Utc3R5bGUuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPXgz/Unk1c25mbVlUX2ZN/YjRkZnFCQTYtaGhr/ZTlNbThwOFBhOWNu/elY5TlU9";
 
+
 export const projects: Project[] = [
   
-
+  {
+    id: 1,
+    title: "landing page portfolio ",
+    description:"A portfolio landing page designed using Next.js, Tailwind CSS, and JavaScript, featuring 5 well-structured and neatly styled sections. The project is 90% complete and currently in its final stages.",
+    image: "/images/landingpage.png",
+    liveUrl: "https://landing-page-nine-alpha-42.vercel.app/",
+    sourceUrl: "https://github.com/MLRiida09/landing-page-portfolio",
+    category:"Next.js"
+  },
+  
 ];
 
 // Blogs Data : 

@@ -56,7 +56,7 @@ export default function ProjectsPage(): JSX.Element {
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             I have <span className="font-semibold">{projects.length} total projects </span>
-            spread across <span className="font-semibold">{categories.length} categories </span>
+            spread across <span className="font-semibold">{categories.length-1} categories </span>
             <br />
             You can check out the source code and live demo of the projects.
           </motion.p>
@@ -169,7 +169,7 @@ export default function ProjectsPage(): JSX.Element {
                     {project.title}
                   </motion.h3>
                   <motion.p
-                    className="text-gray-200 mb-6 line-clamp-3 leading-relaxed"
+                    className="text-gray-200 mb-6 line-clamp-non leading-relaxed"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: 0.4 + 0.1 * index }}
