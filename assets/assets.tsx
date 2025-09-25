@@ -310,16 +310,7 @@ const comingSoon =
 
 export const projects: Project[] = [
   
-  {
-    id: 1,
-    title: "Coming soon",
-    description: "I’ve completed the Blogs and Projects sections, but there are still some unfinished projects with a few issues. I’m currently working on fixing them, and once everything is resolved, I’ll publish the articles and projects at the right time.",
-    image: comingSoon,
-    liveUrl: "https://github.com/MLRiida09",
-    sourceUrl: "https://github.com/MLRiida09",
-    category:"comingsoon"
-  },
-  
+
 ];
 
 // Blogs Data : 
