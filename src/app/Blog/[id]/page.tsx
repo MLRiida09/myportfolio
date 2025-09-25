@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { JSX, useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { blogs, Blog, myPic } from "../../../../assets/assets";
+import { blogs, Blog } from "../../../../assets/assets";
 
 export default function BlogDetailPage(): JSX.Element {
   const params = useParams();
@@ -169,7 +169,7 @@ export default function BlogDetailPage(): JSX.Element {
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-emerald-500/50">
               <Image
-                src={myPic}
+                
                 alt="my-picture"
                 width={48}
                 height={48}

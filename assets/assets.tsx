@@ -47,7 +47,7 @@ export const Navlinks = [
   { id: 2, url: '/About', label: 'About' },
   { id: 4, url: '/Services', label: ' Services' },
   { id: 3, url: '/Projects', label: 'Projects' },
-  { id: 5, url: '/Blog', label: 'Blog ' },
+  { id: 5, url: '/Blog', label: 'CodeTips' },
 ];
 
 
@@ -160,11 +160,11 @@ export const obstacles = ["Anxiety", "Overthinking", "Self-Doubt"];
 
 
 export const social = [
-    { icon: FaSquareUpwork, label:"Upwork",    link:"https://www.upwork.com/freelancers/~01296c693cf92bee69" },
-    { icon: FaLinkedin, label:"LinkedIn",      link:"https://www.linkedin.com/in/rida-mellal-203989371/" },
-    { icon: FaGithub,   label:"GitHub",            link: "https://github.com/MLRiida09" },
+    { icon: FaSquareUpwork, label:"Upwork", link:"https://www.upwork.com/freelancers/~01296c693cf92bee69" },
+    { icon: FaLinkedin, label:"LinkedIn", link:"https://www.linkedin.com/in/rida-mellal-203989371/" },
+    { icon: FaGithub,   label:"GitHub", link: "https://github.com/MLRiida09" },
     { icon: FaStackOverflow,label:"StackOverflow", link: "https://stackoverflow.com/users/31533786/rida-mellal" },
-    { icon: SiWellfound,    label:"wellfound",         link:"https://wellfound.com/u/rida-mellal-2" },
+    { icon: SiWellfound,    label:"wellfound", link:"https://wellfound.com/u/rida-mellal-2" },
   ];
 
 //============================================================================
@@ -301,6 +301,7 @@ export interface Project {
   image: string;
   liveUrl: string;
   sourceUrl: string;
+  category?: string;
   
 }
 
@@ -315,7 +316,8 @@ export const projects: Project[] = [
     description: "I’ve completed the Blogs and Projects sections, but there are still some unfinished projects with a few issues. I’m currently working on fixing them, and once everything is resolved, I’ll publish the articles and projects at the right time.",
     image: comingSoon,
     liveUrl: "https://github.com/MLRiida09",
-    sourceUrl: "https://github.com/MLRiida09"
+    sourceUrl: "https://github.com/MLRiida09",
+    category:"comingsoon"
   },
   
 ];
@@ -329,7 +331,7 @@ export interface Blog {
   description : string ; 
   content : string ;
   image : string ; 
-  category: string;
+  category?: string;
 }
 
 export const blogs: Blog[] = [
@@ -361,10 +363,4 @@ export const blogs: Blog[] = [
 ] ;
 
 
-
-
-
-
-
-export { myPic };
 

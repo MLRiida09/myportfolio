@@ -1,7 +1,6 @@
 "use client";
 
 import React, { JSX, useState } from "react";
-import { RiAdminFill } from "react-icons/ri";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { blogs, Blog } from "../../../assets/assets";
@@ -10,20 +9,16 @@ export default function BlogsPage(): JSX.Element {
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  // استخراج الفئات الفريدة من البيانات
-  const categories: string[] = [
-    "All",
-    ...new Set(blogs.map((b: Blog) => b.category || "Genral⭐")),
-  ];
+  // taking categories from assets just one time for each category 
+  const categories: string[] = ["All",...new Set(blogs.map((b: Blog) => b.category || "Genral⭐")),];
 
-  // تصفية المدونات حسب الفئة المختارة
-  const filteredblogs: Blog[] =
+  // Filter blogs by the selected category
+  const filteredblogs: Blog[] = 
     selectedCategory === "All"
       ? blogs
       : blogs.filter(
-          (blog: Blog) => (blog.category || "Genral⭐") === selectedCategory
-        );
-
+          (blog: Blog) => (blog.category || "Genral⭐") === selectedCategory);
+  
   const handleCategoryChange = (category: string): void => {
     setSelectedCategory(category);
   };
@@ -34,11 +29,6 @@ export default function BlogsPage(): JSX.Element {
       : blogs.filter(
           (blog: Blog) => (blog.category || "Genral⭐") === category
         ).length;
-  };
-
-  const handleAddblog = (): void => {
-    // سيتم ربطه لاحقاً بـ admin panel
-    console.log("Navigate to add blog panel");
   };
 
   const handleReadblog = (blogId: string | number): void => {
@@ -54,7 +44,7 @@ export default function BlogsPage(): JSX.Element {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-        >
+         >
           {/* Left Side */}
           <div className="flex-1">
             <motion.h1
@@ -81,45 +71,13 @@ export default function BlogsPage(): JSX.Element {
               <span className="font-semibold">{blogs.length} total posts</span>{" "}
               spread across{" "}
               <span className="font-semibold">
-                {categories.length - 1} categories
-              </span>{" "}
+                {categories.length} categories</span>{" "}
               <br />
               plus a personal one where I talk about random non-tech stuff I
               like.
             </motion.p>
           </div>
-
-          {/* Right Side - Admin Panel */}
-          <motion.div
-            className="lg:flex-shrink-0"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <motion.div
-              onClick={handleAddblog}
-              className="bg-transparent backdrop-blur-xl border border-blue-500/30 rounded-3xl p-6 cursor-pointer group"
-              whileTap={{ scale: 0.98 }}
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <motion.div
-                  className="w-12 h-12 rounded-2xl bg-transparent flex items-center justify-center shadow-lg"
-                  whileHover={{ rotate: 10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <RiAdminFill className="text-white w-6 h-6" />
-                </motion.div>
-                <div>
-                  <h3 className="text-white font-bold text-lg group-hover:text-blue-300 transition-colors">
-                    Admin Panel
-                  </h3>
-                  <p className="text-gray-400 text-sm">Manage your blogs</p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
         </motion.div>
-
         {/* ---------------- Categories ---------------- */}
         <motion.div
           className="mb-12"
@@ -178,19 +136,15 @@ export default function BlogsPage(): JSX.Element {
         </motion.div>
 
         {/* ---------------- Results Info ---------------- */}
-        <motion.div
-          className="flex justify-between items-center mb-10 px-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-        >
+        <div
+          className="flex justify-between items-center mb-10 px-4">
           <div className="text-gray-400 flex items-center gap-2">
-            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-blue-500 rounded-full animated-puls"></div>
             <span>
               Showing {filteredblogs.length} of {blogs.length} blogs
             </span>
           </div>
-        </motion.div>
+        </div>
 
         {/* ---------------- Blogs Grid ---------------- */}
         <motion.div
