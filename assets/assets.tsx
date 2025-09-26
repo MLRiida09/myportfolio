@@ -3,10 +3,13 @@ import { Variants } from "framer-motion";
 import { FiDownload, FiMail } from 'react-icons/fi'; 
 import {FaGraduationCap} from "react-icons/fa"; 
 // Icons for Services Cards : 
-import { 
-  Code, Globe, 
-  ShoppingCart, Cloud,
-  LucideIcon } from "lucide-react";
+import 
+{ PanelsTopLeft ,ShoppingCart
+   ,Smartphone  ,FileSliders,
+   LucideIcon
+ } from 'lucide-react';
+
+
 //my photo : 
 import myPic from './mypic.jpg';
 
@@ -40,7 +43,7 @@ import { FaStackOverflow } from "react-icons/fa";
 import { SiWellfound } from "react-icons/si";
 
 //admin panel icons :
-import armorkey from './admin.svg'
+
 
 //nav link on Navbar
 export const Navlinks = [
@@ -193,7 +196,7 @@ export const certificates = [
   {
     title: "Bachelor's Degree in Automation and Industrial Computing",
     issuer: "Blida 1 University",
-    year: "2026",
+    year: "2024",
     icon: FaGraduationCap,
   },
 ];
@@ -245,12 +248,12 @@ export interface Service {
 export const services: Service[] = [
   {
     id: 1,
-    title: "Web, Blog & Mobile Apps",
+    title: "Web Design & Development",
     description:
-      "I develop full-featured websites, blogs, and mobile apps with modern frameworks like React, Next.js, and React Native.",
+      "Designing and building websites that look great and work well for users.",
     description2:
-      "Responsive, high-quality solutions with smooth user experience and interactive design.",
-    icon: Code,
+      "Crafting visually appealing and fully functional websites with responsive layouts, smooth navigation, and optimized performance across all devices.",
+    icon: PanelsTopLeft,
     color: "text-gray-400",
     bgGradient: "bg-gradient-to-br from-gray-800 to-gray-900",
   },
@@ -258,32 +261,32 @@ export const services: Service[] = [
     id: 2,
     title: "E-commerce Solutions",
     description:
-      "Advanced online stores with secure payment gateways, product management, and analytics integration.",
+      "Building online stores that are safe, easy to manage, and ready to grow with your business.",
     description2:
-      "Custom solutions for small and medium businesses aiming for growth online.",
+      "Creating secure and scalable e-commerce platforms with seamless payment integration, advanced product management, and detailed sales analytics.",
     icon: ShoppingCart,
     color: "text-gray-400",
     bgGradient: "bg-gradient-to-br from-gray-800 to-gray-900",
   },
   {
     id: 3,
-    title: "Web Optimization & Performance",
+    title: "Mobile App Development",
     description:
-      "Enhancing website speed, SEO, accessibility, and responsiveness for better user retention.",
+      "Creating mobile applications that work seamlessly on different devices and are easy to use.",
     description2:
-      "Optimize front-end and back-end for a seamless experience across all devices.",
-    icon: Globe,
+      "Building cross-platform mobile apps with React Native, delivering high performance, smooth navigation, and intuitive user interfaces.",
+    icon: Smartphone,
     color: "text-gray-400",
     bgGradient: "bg-gradient-to-br from-gray-800 to-gray-900",
   },
   {
     id: 4,
-    title: "API Integration & Automation",
+    title: "Custom Dashboards & Admin Panels",
     description:
-      "Connecting web apps to external APIs, automating workflows, and improving business processes.",
+      "Creating custom dashboards that make it easier to manage data and gain useful insights.",
     description2:
-      "Reliable integrations for payment, messaging, or data services to enhance functionality.",
-    icon: Cloud,
+      "Developing tailored dashboards with real-time data visualization, advanced user management, and detailed business analytics.",
+    icon: FileSliders,
     color: "text-gray-400",
     bgGradient: "bg-gradient-to-br from-gray-800 to-gray-900",
   },
