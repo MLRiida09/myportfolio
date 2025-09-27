@@ -120,8 +120,7 @@ This is an automated message from your website's contact form.
 
   return (
     <section
-      id="home"
-      className="min-h-screen flex items-center justify-center pt-[10vh] sm:pt-[12vh]"
+      className="hidden sm:flex min-h-screen items-center justify-center pt-[10vh] sm:pt-[12vh]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">

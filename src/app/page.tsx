@@ -1,11 +1,12 @@
+"use client"
 import React from 'react'
-import Home from '../components/home/Home'
+import ResponsiveHero from '@/components/home/Hero/ResponsiveHero'
 
 
 function home() {
   return (
-    <div className=''>
-      <Home />
+    <div>
+      <ResponsiveHero />
     </div>
   )
 }
