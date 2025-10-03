@@ -314,17 +314,24 @@ const comingSoon =
 
 
 export const projects: Project[] = [
-  
   {
-    id: 1,
-    title: "landing page portfolio ",
-    description:"A portfolio landing page designed using Next.js, Tailwind CSS, and JavaScript, featuring 5 well-structured and neatly styled sections. The project is 90% complete and currently in its final stages.",
-    image: "/images/landingpage.PNG",
-    liveUrl: "https://landing-page-nine-alpha-42.vercel.app/",
-    sourceUrl: "https://github.com/MLRiida09/landing-page-portfolio",
-    category:"Next.js"
-  },
-  
+  id: 1,
+  title: "Landing Page Portfolio",
+  description: "A portfolio landing page built with Next.js, Tailwind CSS, and TypeScript. It includes 5 well-structured, neatly styled sections. The project is about 90% complete and currently in its final stages.",
+  image: "/images/landingpage.PNG",
+  liveUrl: "https://landing-page-nine-alpha-42.vercel.app/",
+  sourceUrl: "https://github.com/MLRiida09/landing-page-portfolio",
+  category: "portfolio"
+},
+{
+  id: 2,
+  title: "Clothing Store",
+  description: "An ecommerce clothing store website designed using Next.js, Tailwind CSS, and TypeScript. The project is not yet complete, and I am still working on it.",
+  image: "/images/landingpage.PNG",
+  liveUrl: "https://clothing-store-kohl.vercel.app/",
+  sourceUrl: "https://github.com/MLRiida09/clothing-store",
+  category: "online-shop"
+}
 ];
 
 // Blogs Data : 
