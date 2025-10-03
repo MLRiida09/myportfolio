@@ -327,7 +327,7 @@ export const projects: Project[] = [
   id: 2,
   title: "Clothing Store",
   description: "An ecommerce clothing store website designed using Next.js, Tailwind CSS, and TypeScript. The project is not yet complete, and I am still working on it.",
-  image: "/images/landingpage.PNG",
+  image: "/images/clothingstore.PNG",
   liveUrl: "https://clothing-store-kohl.vercel.app/",
   sourceUrl: "https://github.com/MLRiida09/clothing-store",
   category: "online-shop"

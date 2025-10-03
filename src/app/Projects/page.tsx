@@ -215,7 +215,7 @@ export default function ProjectsPage(): JSX.Element {
                     className="bg-gray-700/50 text-gray-300 px-6 py-3 rounded-2xl backdrop-blur-sm border border-gray-600/50 flex items-center justify-center"
                     whileTap={{ scale: 0.98 }}
                   >
-                    GitHub Repositorie
+                    GitHub Repo
                   </motion.a>
                 </motion.div>
               </div>
